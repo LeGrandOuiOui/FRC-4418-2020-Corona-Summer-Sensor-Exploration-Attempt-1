@@ -10,11 +10,18 @@
 #include <iostream>
 
 #include <frc/smartdashboard/SmartDashboard.h>
+#include <frc/shuffleboard/Shuffleboard.h>
 
 void Robot::RobotInit() {
   m_chooser.SetDefaultOption(kAutoNameDefault, kAutoNameDefault);
   m_chooser.AddOption(kAutoNameCustom, kAutoNameCustom);
   frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
+
+  frc::SmartDashboard::PutNumber("SmartDash Test Counter", testCounter);
+
+  robotTab = frc::Shuffleboard::GetTab("Test Tab Aight?");
+  nt::NetworkTableEntry myCounter = robotTab.Add("Network Number", testCounter)
+                                            .WithWidget(frc::BuiltInWidgets::kNumberSlider).GetEntry();
 }
 
 /**
@@ -25,24 +32,15 @@ void Robot::RobotInit() {
  * <p> This runs after the mode specific periodic functions, but before
  * LiveWindow and SmartDashboard integrated updating.
  */
-void Robot::RobotPeriodic() {}
+void Robot::RobotPeriodic() {
+  frc::Shuffleboard::Update();
+}
 
-/**
- * This autonomous (along with the chooser code above) shows how to select
- * between different autonomous modes using the dashboard. The sendable chooser
- * code works with the Java SmartDashboard. If you prefer the LabVIEW Dashboard,
- * remove all of the chooser code and uncomment the GetString line to get the
- * auto name from the text box below the Gyro.
- *
- * You can add additional auto modes by adding additional comparisons to the
- * if-else structure below with additional strings. If using the SendableChooser
- * make sure to add them to the chooser code above as well.
- */
 void Robot::AutonomousInit() {
   m_autoSelected = m_chooser.GetSelected();
   // m_autoSelected = SmartDashboard::GetString("Auto Selector",
   //     kAutoNameDefault);
-  std::cout << "Auto selected: " << m_autoSelected << std::endl;
+  std::cout << "Auto selected: " << m_autoSelected << '\n';
 
   if (m_autoSelected == kAutoNameCustom) {
     // Custom Auto goes here
@@ -59,11 +57,19 @@ void Robot::AutonomousPeriodic() {
   }
 }
 
-void Robot::TeleopInit() {}
+void Robot::TeleopInit() {
 
-void Robot::TeleopPeriodic() {}
+}
 
-void Robot::DisabledInit() {}
+void Robot::TeleopPeriodic() {
+  testCounter++;
+  frc::SmartDashboard::PutNumber("SmartDash Test Counter", testCounter);
+}
+
+void Robot::DisabledInit() {
+  testCounter = 0;
+  frc::SmartDashboard::ClearPersistent("SmartDash Test Counter");
+}
 
 void Robot::DisabledPeriodic() {}
 
