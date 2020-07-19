@@ -22,7 +22,14 @@ class Robot : public frc::TimedRobot {
 
     std::string robotStatus = "Idle";
     int testCounter = 0;
-    frc::ShuffleboardTab& robotTab;
+
+    const std::string statusTabName = "Test Tab Aight?"; 
+
+    nt::NetworkTableEntry networkCounter;
+    wpi::StringMap<std::shared_ptr<nt::Value>> networkCounterProperties = {
+      std::make_pair("min", nt::Value::MakeDouble(0)),
+      std::make_pair("max", nt::Value::MakeDouble(1000))
+    };
 
   public:
     void RobotInit() override;
