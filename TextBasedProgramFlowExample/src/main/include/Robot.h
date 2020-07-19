@@ -15,21 +15,27 @@
 
 class Robot : public frc::TimedRobot {
   private:
-    frc::SendableChooser<std::string> m_chooser;
-    const std::string kAutoNameDefault = "Default";
-    const std::string kAutoNameCustom = "My Auto";
-    std::string m_autoSelected;
-
-    std::string robotStatus = "Idle";
-    int testCounter = 0;
+    // frc::SendableChooser<std::string> m_chooser;
+    // const std::string kAutoNameDefault = "Default";
+    // const std::string kAutoNameCustom = "My Auto";
+    // std::string m_autoSelected;
 
     const std::string statusTabName = "Test Tab Aight?"; 
 
-    nt::NetworkTableEntry networkCounter;
-    wpi::StringMap<std::shared_ptr<nt::Value>> networkCounterProperties = {
-      std::make_pair("min", nt::Value::MakeDouble(0)),
-      std::make_pair("max", nt::Value::MakeDouble(1000))
-    };
+    // int testCounter = 0;
+
+    // nt::NetworkTableEntry networkCounter;
+    // wpi::StringMap<std::shared_ptr<nt::Value>> networkCounterProperties = {
+    //   std::make_pair("min", nt::Value::MakeDouble(0)),
+    //   std::make_pair("max", nt::Value::MakeDouble(1000))
+    // };
+
+    std::string robotStatus = "Idle";     // Other states include "Driving", "Firing", "Loading", 
+                                                               // "Targeting", "Manipulating", "Climbing", "Autonomous"
+    double motorDriveSpeed = 0.0;         // Max of 1.0
+    std::string loaderStatus = "Idle";    // opposite would be "Spinning"
+    std::string shooterStatus = "Idle";   // opposite would be "Firing"
+    std::string targetingStatus = "Deactivated";
 
   public:
     void RobotInit() override;

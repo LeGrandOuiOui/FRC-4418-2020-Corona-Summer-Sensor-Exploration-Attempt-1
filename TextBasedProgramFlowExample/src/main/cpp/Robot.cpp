@@ -13,21 +13,25 @@
 #include <frc/shuffleboard/Shuffleboard.h>
 
 void Robot::RobotInit() {
-  m_chooser.SetDefaultOption(kAutoNameDefault, kAutoNameDefault);
-  m_chooser.AddOption(kAutoNameCustom, kAutoNameCustom);
-  frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
+  // m_chooser.SetDefaultOption(kAutoNameDefault, kAutoNameDefault);
+  // m_chooser.AddOption(kAutoNameCustom, kAutoNameCustom);
+  // frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
 
   // Example of using SmartDashboard for simple number-printing
-  frc::SmartDashboard::PutNumber("SmartDash Test Counter", testCounter);
+  // frc::SmartDashboard::PutNumber("SmartDash Test Counter", testCounter);
 
 
   // Example of using NetworkTableEntry class for complex widget displaying
     // Adds a number slider that can be seen slowly increasing
-  networkCounter = 
-    frc::Shuffleboard::GetTab(statusTabName).Add("Network Number", testCounter)
-                                            .WithWidget(frc::BuiltInWidgets::kNumberSlider)
-                                            // See Robot.h for super disgusting definition of networkCounterProperties
-                                            .WithProperties(networkCounterProperties).GetEntry();
+  // networkCounter = 
+  //   frc::Shuffleboard::GetTab(statusTabName).Add("Network Number", testCounter)
+  //                                           .WithWidget(frc::BuiltInWidgets::kNumberSlider)
+  //                                           // See Robot.h for super disgusting definition of networkCounterProperties
+  //                                           .WithProperties(networkCounterProperties).GetEntry();
+
+
+
+  
 }
 
 
@@ -36,24 +40,33 @@ void Robot::RobotPeriodic() {
 }
 
 void Robot::AutonomousInit() {
-  m_autoSelected = m_chooser.GetSelected();
-  // m_autoSelected = SmartDashboard::GetString("Auto Selector",
-  //     kAutoNameDefault);
-  std::cout << "Auto selected: " << m_autoSelected << '\n';
+  // m_autoSelected = m_chooser.GetSelected();
+  // // m_autoSelected = SmartDashboard::GetString("Auto Selector",
+  // //     kAutoNameDefault);
+  // std::cout << "Auto selected: " << m_autoSelected << '\n';
 
-  if (m_autoSelected == kAutoNameCustom) {
-    // Custom Auto goes here
-  } else {
-    // Default Auto goes here
-  }
+  // if (m_autoSelected == kAutoNameCustom) {
+  //   // Custom Auto goes here
+  // } else {
+  //   // Default Auto goes here
+  // }
+
+
+  
+
+
 }
 
 void Robot::AutonomousPeriodic() {
-  if (m_autoSelected == kAutoNameCustom) {
-    // Custom Auto goes here
-  } else {
-    // Default Auto goes here
-  }
+  // if (m_autoSelected == kAutoNameCustom) {
+  //   // Custom Auto goes here
+  // } else {
+  //   // Default Auto goes here
+  // }
+
+
+
+
 }
 
 void Robot::TeleopInit() {
@@ -61,17 +74,25 @@ void Robot::TeleopInit() {
 }
 
 void Robot::TeleopPeriodic() {
-  testCounter++;
+  // testCounter++;
   // PutNumber is like a value-updating function, so it must be called periodically
-  frc::SmartDashboard::PutNumber("SmartDash Test Counter", testCounter);
+  // frc::SmartDashboard::PutNumber("SmartDash Test Counter", testCounter);
 
   // Set functions for NetworkTableEntry class must also be called periodically to display updating values
-  networkCounter.SetDouble(testCounter);
+  // networkCounter.SetDouble(testCounter);
+
+
+
+
 }
 
 void Robot::DisabledInit() {
-  testCounter = 0;
-  frc::SmartDashboard::ClearPersistent("SmartDash Test Counter");   // needed to get rid of the pesky default persistence
+  // testCounter = 0;
+  // frc::SmartDashboard::ClearPersistent("SmartDash Test Counter");   // needed to get rid of the pesky default persistence
+
+
+
+
 }
 
 void Robot::DisabledPeriodic() {}
