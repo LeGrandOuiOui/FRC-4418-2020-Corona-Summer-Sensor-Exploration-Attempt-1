@@ -15,33 +15,33 @@
 
 #include "StatusDisplay.h"
 
-class Robot : public frc::TimedRobot {
-  private:
-    // frc::SendableChooser<std::string> m_chooser;
-    // const std::string kAutoNameDefault = "Default";
-    // const std::string kAutoNameCustom = "My Auto";
-    // std::string m_autoSelected; 
+class Robot : public frc::TimedRobot
+{
+private:
+  // frc::SendableChooser<std::string> m_chooser;
+  // const std::string kAutoNameDefault = "Default";
+  // const std::string kAutoNameCustom = "My Auto";
+  // std::string m_autoSelected;
 
-    // int testCounter = 0;
+  // int testCounter = 0;
 
-    // nt::NetworkTableEntry networkCounter;
-    // wpi::StringMap<std::shared_ptr<nt::Value>> networkCounterProperties = {
-    //   std::make_pair("min", nt::Value::MakeDouble(0)),
-    //   std::make_pair("max", nt::Value::MakeDouble(1000))
-    // };
+  // nt::NetworkTableEntry networkCounter;
+  // wpi::StringMap<std::shared_ptr<nt::Value>> networkCounterProperties = {
+  //   std::make_pair("min", nt::Value::MakeDouble(0)),
+  //   std::make_pair("max", nt::Value::MakeDouble(1000))
+  // };
 
-    StatusDisplay statusDisplay;
+  StatusDisplay statusDisplay;
 
-  public:
-    void RobotInit() override;
-    void RobotPeriodic() override;
-    void AutonomousInit() override;
-    void AutonomousPeriodic() override;
-    void TeleopInit() override;
-    void TeleopPeriodic() override;
-    void DisabledInit() override;
-    void DisabledPeriodic() override;
-    void TestInit() override;
-    void TestPeriodic() override;
-
+public:
+  void RobotInit() override;
+  void RobotPeriodic() override;
+  void AutonomousInit() override;
+  void AutonomousPeriodic() override;
+  void TeleopInit() override;
+  void TeleopPeriodic() override;
+  void DisabledInit() override;
+  void DisabledPeriodic() override;
+  void TestInit() override;
+  void TestPeriodic() override;
 };

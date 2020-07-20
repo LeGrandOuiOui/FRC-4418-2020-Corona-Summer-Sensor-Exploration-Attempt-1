@@ -14,6 +14,9 @@
 
 class StatusDisplay {
   private:
+
+    friend class Robot;
+
     enum RobotStates {
       IDLE_STATE,
       DRIVING_STATE,
