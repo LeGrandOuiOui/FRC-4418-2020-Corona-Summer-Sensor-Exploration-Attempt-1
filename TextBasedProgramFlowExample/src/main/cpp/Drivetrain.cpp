@@ -63,16 +63,17 @@ void Drivetrain::tankDrive()
 {
     // Get absolute average of y-axis values from both joysticks
     Robot::setMotorsSpeed(
-        (abs(static_cast<double>(Robot::xboxController.GetY(frc::GenericHID::kLeftHand)+0.0))
-        + abs(static_cast<double>(Robot::xboxController.GetY(frc::GenericHID::kRightHand)+0.0)))
+        (std::abs(Robot::xboxController.GetY(frc::GenericHID::kLeftHand))
+        + std::abs(Robot::xboxController.GetY(frc::GenericHID::kRightHand)))
         
-        / 2.0);
+        / 2.0
+    );
 }
 
 void Drivetrain::droneDrive()
 {
     // Get absolute value of left joystick y-axis
     Robot::setMotorsSpeed(
-        abs(static_cast<double>(Robot::xboxController.GetY(frc::GenericHID::kLeftHand)))
+        std::abs(Robot::xboxController.GetY(frc::GenericHID::kLeftHand))
     );
 }
