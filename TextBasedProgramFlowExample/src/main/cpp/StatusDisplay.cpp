@@ -13,7 +13,7 @@ StatusDisplay& StatusDisplay::populate_display() {
     robotStateNE = frc::Shuffleboard::GetTab(statusTabName)
         .Add("Status Narration", robotStateToString())
         .WithWidget(frc::BuiltInWidgets::kTextView)
-        .WithSize(3,1)
+        .WithSize(4,1)
         .WithPosition(3,0)
         .GetEntry();
     

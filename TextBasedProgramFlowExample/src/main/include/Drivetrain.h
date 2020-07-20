@@ -7,6 +7,9 @@
 
 #pragma once
 
+#include "Robotmap.h"
+
+
 class Drivetrain
 {
 private:
@@ -18,4 +21,5 @@ public:
 
   void arcadeDrive();
   void tankDrive();
+  void droneDrive();    // left joystick Y-axis controls speed, right joystick XY controls direction
 };

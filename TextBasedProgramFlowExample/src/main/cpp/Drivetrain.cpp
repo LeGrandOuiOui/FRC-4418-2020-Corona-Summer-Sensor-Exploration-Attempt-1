@@ -12,28 +12,54 @@
 #include "Robotmap.h"
 #include "Drivetrain.h"
 
+void Drivetrain::checkAndExecDriveMode()
+{
+    /*
+    if (B2 is pressed && B1 NOT pressed)
+        switch to arcade drive
+    else if (B1 is pressed && already in arcade or drone) {
+        if (in arcade)
+            switch to drone
+        if (in drone)
+            switch to arcade
+        remembered option = current drive
+    } else
+        switch to last remembered arcade/drone option   
+    */
 
-void Drivetrain::checkAndExecDriveMode() {
-    if (Robot::getDriveMode() == Robotmap::DriveModes::ARCADE_MODE)
+    
+
+    switch (Robot::getDriveMode())
+    {
+    case Robotmap::DriveModes::ARCADE_MODE:
         arcadeDrive();
-    else if (Robot::getDriveMode() == Robotmap::DriveModes::TANK_MODE)
+        break;
+    case Robotmap::DriveModes::TANK_MODE:
         tankDrive();
-    else
+        break;
+    case Robotmap::DriveModes::DRONE_MODE:
+        droneDrive();
+    default:
         std::cout << "DRIVETRAIN ERROR: Unknown driveMode evaluated\n";
+    }
 }
 
-void Drivetrain::arcadeDrive() {
+void Drivetrain::arcadeDrive()
+{
     // Get absolute distance from joystick center for printing motor speed
     Robot::setMotorsSpeed(sqrt(
-        pow(Robot::xboxController.GetX(frc::GenericHID::kLeftHand), 2.0) + 
-        pow(Robot::xboxController.GetY(frc::GenericHID::kLeftHand), 2.0) 
-    ));
+        pow(Robot::xboxController.GetX(frc::GenericHID::kLeftHand), 2.0) +
+        pow(Robot::xboxController.GetY(frc::GenericHID::kLeftHand), 2.0)));
 }
 
-void Drivetrain::tankDrive() {
+void Drivetrain::tankDrive()
+{
     // Get average of y-axis values from both joysticks
     Robot::setMotorsSpeed(
-        ( Robot::xboxController.GetY(frc::GenericHID::kLeftHand) + Robot::xboxController.GetY(frc::GenericHID::kRightHand) )
-            / 2.0
-    );
+        (Robot::xboxController.GetY(frc::GenericHID::kLeftHand) + Robot::xboxController.GetY(frc::GenericHID::kRightHand)) / 2.0);
+}
+
+void Drivetrain::droneDrive()
+{
+    // TODO: figure out display code for droneDrive
 }

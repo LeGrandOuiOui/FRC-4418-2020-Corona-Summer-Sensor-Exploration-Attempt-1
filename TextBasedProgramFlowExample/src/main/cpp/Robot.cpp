@@ -35,17 +35,6 @@ void Robot::RobotInit()
   // m_chooser.AddOption(kAutoNameCustom, kAutoNameCustom);
   // frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
 
-  // Example of using SmartDashboard for simple number-printing
-  // frc::SmartDashboard::PutNumber("SmartDash Test Counter", testCounter);
-
-  // Example of using NetworkTableEntry class for complex widget displaying
-  // Adds a number slider that can be seen slowly increasing
-  // networkCounter =
-  //   frc::Shuffleboard::GetTab(statusTabName).Add("Network Number", testCounter)
-  //                                           .WithWidget(frc::BuiltInWidgets::kNumberSlider)
-  //                                           // See Robot.h for super disgusting definition of networkCounterProperties
-  //                                           .WithProperties(networkCounterProperties).GetEntry();
-
   statusDisplay.populate_display();
 }
 
@@ -84,28 +73,26 @@ void Robot::TeleopInit()
 
 void Robot::TeleopPeriodic()
 {
-  // testCounter++;
-  // PutNumber is like a value-updating function, so it must be called periodically
-  // frc::SmartDashboard::PutNumber("SmartDash Test Counter", testCounter);
-
-  // Set functions for NetworkTableEntry class must also be called periodically to display updating values
-  // networkCounter.SetDouble(testCounter);
-
   drivetrain.checkAndExecDriveMode();
-  std::cout << "Drive VALUE: " << motorsSpeed << '\n';
+  std::cout << std::boolalpha << "Test button pressed? " << xboxController.GetBackButtonPressed() << '\n';
 }
 
 void Robot::DisabledInit()
 {
-  // testCounter = 0;
-  // frc::SmartDashboard::ClearPersistent("SmartDash Test Counter");   // needed to get rid of the pesky default persistence
+  
 }
 
-void Robot::DisabledPeriodic() {}
+void Robot::DisabledPeriodic() {
+  
+}
 
-void Robot::TestInit() {}
+void Robot::TestInit() {
 
-void Robot::TestPeriodic() {}
+}
+
+void Robot::TestPeriodic() {
+  
+}
 
 #ifndef RUNNING_FRC_TESTS
 int main()

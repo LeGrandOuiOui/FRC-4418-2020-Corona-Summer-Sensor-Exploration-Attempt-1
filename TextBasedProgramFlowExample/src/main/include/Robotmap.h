@@ -31,9 +31,10 @@ public:
     enum class DriveModes
     {
         ARCADE_MODE,
-        TANK_MODE
+        TANK_MODE,
+        DRONE_MODE
     };
 
     // Ports and Channels
-    inline static constexpr int XBOXCONTROLLER_PORT { 3 };
+    static constexpr int XBOXCONTROLLER_PORT { 3 };
 };
