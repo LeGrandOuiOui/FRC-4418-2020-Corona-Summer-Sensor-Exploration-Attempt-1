@@ -16,9 +16,6 @@
 class StatusDisplay {
   private:
 
-    friend class Robot;
-
-
     const std::string statusTabName = "Test Tab Aight?";
     
 
