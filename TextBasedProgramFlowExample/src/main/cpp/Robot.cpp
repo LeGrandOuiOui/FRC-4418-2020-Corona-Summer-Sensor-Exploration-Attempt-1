@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 #include "Robot.h"
+#include "StatusDisplay.h"
 
 #include <iostream>
 
@@ -30,13 +31,13 @@ void Robot::RobotInit() {
   //                                           .WithProperties(networkCounterProperties).GetEntry();
 
 
-
-  
+  statusDisplay.populate_display();
+    
 }
 
 
 void Robot::RobotPeriodic() {
-  
+  statusDisplay.update_statuses();
 }
 
 void Robot::AutonomousInit() {

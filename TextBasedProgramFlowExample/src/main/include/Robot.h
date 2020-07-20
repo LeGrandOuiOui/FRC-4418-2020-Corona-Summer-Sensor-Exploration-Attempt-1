@@ -13,14 +13,14 @@
 #include <frc/smartdashboard/SendableChooser.h>
 #include <frc/shuffleboard/Shuffleboard.h>
 
+#include "StatusDisplay.h"
+
 class Robot : public frc::TimedRobot {
   private:
     // frc::SendableChooser<std::string> m_chooser;
     // const std::string kAutoNameDefault = "Default";
     // const std::string kAutoNameCustom = "My Auto";
-    // std::string m_autoSelected;
-
-    const std::string statusTabName = "Test Tab Aight?"; 
+    // std::string m_autoSelected; 
 
     // int testCounter = 0;
 
@@ -30,12 +30,7 @@ class Robot : public frc::TimedRobot {
     //   std::make_pair("max", nt::Value::MakeDouble(1000))
     // };
 
-    std::string robotStatus = "Idle";     // Other states include "Driving", "Firing", "Loading", 
-                                                               // "Targeting", "Manipulating", "Climbing", "Autonomous"
-    double motorDriveSpeed = 0.0;         // Max of 1.0
-    std::string loaderStatus = "Idle";    // opposite would be "Spinning"
-    std::string shooterStatus = "Idle";   // opposite would be "Firing"
-    std::string targetingStatus = "Deactivated";
+    StatusDisplay statusDisplay;
 
   public:
     void RobotInit() override;
@@ -49,11 +44,4 @@ class Robot : public frc::TimedRobot {
     void TestInit() override;
     void TestPeriodic() override;
 
-    const std::string& getRobotStatus() const {
-      return robotStatus;
-    }
-
-    void setRobotStatus(const std::string& newStatus) {
-      robotStatus = newStatus;
-    }
 };
