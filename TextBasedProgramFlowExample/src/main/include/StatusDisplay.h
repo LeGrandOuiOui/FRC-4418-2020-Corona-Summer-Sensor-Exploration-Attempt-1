@@ -7,8 +7,6 @@
 
 #pragma once
 
-#include <cmath>
-
 #include "networktables/NetworkTableEntry.h"
 #include "wpi/Twine.h"
 
@@ -33,8 +31,8 @@ class StatusDisplay {
     nt::NetworkTableEntry driveModeNE;
     nt::NetworkTableEntry motorsSpeedNE;
       wpi::StringMap<std::shared_ptr<nt::Value>> motorsSpeedNEProperties = {
-        std::make_pair("min", nt::Value::MakeDouble(0)),
-        std::make_pair("max", nt::Value::MakeDouble(sqrt(2)))
+        std::make_pair("min", nt::Value::MakeDouble(0.0)),
+        std::make_pair("max", nt::Value::MakeDouble(1.0))
       };
     nt::NetworkTableEntry loaderBoolNE;
     nt::NetworkTableEntry shooterBoolNE;

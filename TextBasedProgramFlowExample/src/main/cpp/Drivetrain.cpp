@@ -53,19 +53,26 @@ void Drivetrain::checkAndExecDriveMode()
 void Drivetrain::arcadeDrive()
 {
     // Get absolute distance from joystick center for printing motor speed
-    Robot::setMotorsSpeed(sqrt(
-        pow(Robot::xboxController.GetX(frc::GenericHID::kLeftHand), 2.0) +
-        pow(Robot::xboxController.GetY(frc::GenericHID::kLeftHand), 2.0)));
+    Robot::setMotorsSpeed(
+        ((pow(Robot::xboxController.GetX(frc::GenericHID::kLeftHand), 2.0)
+        + pow(Robot::xboxController.GetY(frc::GenericHID::kLeftHand), 2.0)))
+    );
 }
 
 void Drivetrain::tankDrive()
 {
-    // Get average of y-axis values from both joysticks
+    // Get absolute average of y-axis values from both joysticks
     Robot::setMotorsSpeed(
-        (Robot::xboxController.GetY(frc::GenericHID::kLeftHand) + Robot::xboxController.GetY(frc::GenericHID::kRightHand)) / 2.0);
+        (abs(Robot::xboxController.GetY(frc::GenericHID::kLeftHand)) 
+        + abs(Robot::xboxController.GetY(frc::GenericHID::kRightHand))) 
+        
+        / 2.0);
 }
 
 void Drivetrain::droneDrive()
 {
-    // TODO: figure out display code for droneDrive
+    // Get absolute value of left joystick y-axis
+    Robot::setMotorsSpeed(
+        abs(Robot::xboxController.GetY(frc::GenericHID::kLeftHand))
+    );
 }
