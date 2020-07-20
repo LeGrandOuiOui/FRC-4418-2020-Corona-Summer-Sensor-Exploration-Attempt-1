@@ -82,6 +82,8 @@ StatusDisplay& StatusDisplay::update_display_values() {
     isShootingStatus = Robot::getIsShooting();
     isManipingStatus = Robot::getIsManiping();
     isTargetingStatus = Robot::getIsTargeting();
+
+    return *this;
 }
 
 

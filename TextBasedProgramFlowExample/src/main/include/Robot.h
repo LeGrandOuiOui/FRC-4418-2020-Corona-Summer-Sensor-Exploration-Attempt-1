@@ -42,38 +42,38 @@ private:
   static double                 motorsSpeed;            
   static bool                   isLoading;                
   static bool                   isShooting;               
-  static bool                   isManiping;
+  static bool                   isManiping;   // shorthand for isManipulating
   static bool                   isTargeting;              
 
   // Properties Getters and Setters
 public:
-  static const Robotmap::DriveModes& 
-    getDriveMode() { return driveMode; }
+  static Robotmap::DriveModes& 
+    getDriveMode() { return const_cast<Robotmap::DriveModes&>(driveMode); }
   static void 
     setDriveMode(const Robotmap::DriveModes& newDriveMode) { driveMode = newDriveMode; }
 
-  static const double
-    getMotorsSpeed() { return motorsSpeed; }
+  static double
+    getMotorsSpeed() { return const_cast<double&>(motorsSpeed); }
   static void 
     setMotorsSpeed(const double newMotorsSpeed) { motorsSpeed = newMotorsSpeed; }
   
-  static const bool 
-    getIsLoading() { return isLoading; };
+  static bool 
+    getIsLoading() { return const_cast<bool&>(isLoading); };
   static void
     setIsLoading(const bool newIsLoading) { isLoading = newIsLoading; }
   
-  static const bool
-    getIsShooting() { return isShooting; }
+  static bool
+    getIsShooting() { return const_cast<bool&>(isShooting); }
   static void
     setIsShooting(const bool newIsShooting) { isShooting = newIsShooting; }
   
-  static const bool
-    getIsManiping() { return isManiping; }
+  static bool
+    getIsManiping() { return const_cast<bool&>(isManiping); }
   static void
     setIsManiping(const bool newIsManiping) { isManiping = newIsManiping; }
 
-  static const bool
-    getIsTargeting() { return isTargeting; }
+  static bool
+    getIsTargeting() { return const_cast<bool&>(isTargeting); }
   static void
     setIsTargeting(const bool newIsTargeting) { isTargeting = newIsTargeting; }
 
