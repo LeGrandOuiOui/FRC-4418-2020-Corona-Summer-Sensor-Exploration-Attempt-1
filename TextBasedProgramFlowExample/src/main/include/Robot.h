@@ -91,15 +91,3 @@ public:
   void TestInit() override;
   void TestPeriodic() override;
 };
-
-
-// Default values for the robot's Properties
-Robotmap::DriveModes Robot::driveMode   = Robotmap::DriveModes::ARCADE_MODE;
-double Robot::motorsSpeed{ 0.0 };
-bool Robot::isLoading                   = false;
-bool Robot::isShooting                  = false;
-bool Robot::isTargeting                 = false;
-
-
-// Default ports and channels for robot Input Devices
-frc::XboxController Robot::xboxController{ Robotmap::XBOXCONTROLLER_PORT };
