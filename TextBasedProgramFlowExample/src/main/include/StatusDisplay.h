@@ -7,18 +7,17 @@
 
 #pragma once
 
+#include <cmath>
+
 #include "networktables/NetworkTableEntry.h"
 #include "wpi/Twine.h"
-#include <frc/shuffleboard/Shuffleboard.h>
 
 
 class StatusDisplay {
   private:
-
-
-    const std::string statusTabName = "Test Tab Aight?";
+    const std::string statusTabName = "4418 R-Stat Display";
     
-      // TODO: finished COMPLETE robot narration for each subway
+      // TODO: finish COMPLETE robot narration for each subway
     Robotmap::RobotStates robotStateStatus 
       = Robotmap::RobotStates::IDLE_STATE;         // Other states include "Driving", "Firing", "Loading", 
                                                         // "Targeting", "Manipulating", "Climbing", "Autonomous"
@@ -32,6 +31,10 @@ class StatusDisplay {
     nt::NetworkTableEntry robotStateNE;
     nt::NetworkTableEntry driveModeNE;
     nt::NetworkTableEntry motorsSpeedNE;
+      wpi::StringMap<std::shared_ptr<nt::Value>> motorsSpeedNEProperties = {
+        std::make_pair("min", nt::Value::MakeDouble(0)),
+        std::make_pair("max", nt::Value::MakeDouble(sqrt(2)))
+      };
     nt::NetworkTableEntry loaderBoolNE;
     nt::NetworkTableEntry shooterBoolNE;
     nt::NetworkTableEntry targetingBoolNE;

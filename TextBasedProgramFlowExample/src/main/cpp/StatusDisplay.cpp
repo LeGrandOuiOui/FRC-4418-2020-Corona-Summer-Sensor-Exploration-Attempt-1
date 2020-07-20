@@ -27,6 +27,7 @@ StatusDisplay& StatusDisplay::populate_display() {
     motorsSpeedNE = frc::Shuffleboard::GetTab(statusTabName)
         .Add("Motors Speed", motorsSpeedStatus)
         .WithWidget(frc::BuiltInWidgets::kDial)
+        .WithProperties(motorsSpeedNEProperties)
         .WithSize(2,2)
         .WithPosition(1,1)
         .GetEntry();
