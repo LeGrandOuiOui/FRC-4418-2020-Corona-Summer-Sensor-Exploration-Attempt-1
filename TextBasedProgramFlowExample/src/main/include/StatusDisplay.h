@@ -7,23 +7,21 @@
 
 #pragma once
 
-#include <networktables/NetworkTableEntry.h>
-#include <wpi/Twine.h>
+#include "networktables/NetworkTableEntry.h"
+#include "wpi/Twine.h"
 #include <frc/shuffleboard/Shuffleboard.h>
 
-#include "Robotmap.h"
 
 class StatusDisplay {
   private:
 
+
     const std::string statusTabName = "Test Tab Aight?";
     
-
-        // A seperate copy of the robot's properties is made here to prevent the display from causing unwanted behavior
-    Robotmap::RobotStates robotStateStatus = Robotmap::RobotStates::IDLE_STATE;     // Other states include "Driving", "Firing", "Loading", 
+    RobotStates robotStateStatus = IDLE_STATE;     // Other states include "Driving", "Firing", "Loading", 
                                                                // "Targeting", "Manipulating", "Climbing", "Autonomous"
-    Robotmap::DriveModes driveModeStatus = Robotmap::DriveModes::ARCADE_MODE;      // Modes include "Arcade" and "Tank"
-    double motorsSpeedStatus = 0.0;                  // Max of 1.0, min of 0.0
+    DriveModes driveModeStatus = ARCADE_MODE;      // Modes include "Arcade" and "Tank"
+    double motorDriveSpeed = 0.0;            // Max of 1.0, min of 0.0
     bool isLoadingStatus = false;                    // Triggered would be "Spinning", idle would be "Idle"
     bool isShootingStatus = false;                   // Triggered would be "Firing", idle would be "Cold"
     bool isTargetingStatus = false;                  // Triggered would be "Activated", idle would be "Deactivated"

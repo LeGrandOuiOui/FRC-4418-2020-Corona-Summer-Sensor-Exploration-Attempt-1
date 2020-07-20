@@ -37,7 +37,7 @@ void Robot::RobotInit()
 
 void Robot::RobotPeriodic()
 {
-  statusDisplay.update_display_values().update_display();
+  statusDisplay.update_display_values().update_display(); // TODO: Test if this is the issue; if so, refresh on func chaining
 }
 
 void Robot::AutonomousInit()

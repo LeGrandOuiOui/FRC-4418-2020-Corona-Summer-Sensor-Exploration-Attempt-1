@@ -25,7 +25,7 @@ StatusDisplay& StatusDisplay::populate_display() {
         .GetEntry();
         
     motorsSpeedNE = frc::Shuffleboard::GetTab(statusTabName)
-        .Add("Motors Speed", motorsSpeedStatus)
+        .Add("Motors Speed", motorDriveSpeed)
         .WithWidget(frc::BuiltInWidgets::kDial)
         .WithSize(2,2)
         .WithPosition(1,1)
@@ -58,7 +58,7 @@ StatusDisplay& StatusDisplay::populate_display() {
 StatusDisplay& StatusDisplay::update_display() {
     robotStateNE.SetString(robotStateToString());
     driveModeNE.SetString(driveModeToString());
-    motorsSpeedNE.SetDouble(motorsSpeedStatus);
+    motorsSpeedNE.SetDouble(motorDriveSpeed);
     loaderBoolNE.SetBoolean(isLoadingStatus);
     shooterBoolNE.SetBoolean(isShootingStatus);
     targetingBoolNE.SetBoolean(isTargetingStatus);
@@ -66,14 +66,8 @@ StatusDisplay& StatusDisplay::update_display() {
     return *this;
 }
 
-StatusDisplay& StatusDisplay::update_display_values() {
-    driveModeStatus = Robot::getDriveMode();
-    motorsSpeedStatus = Robot::getMotorsSpeed();
-    isLoadingStatus = Robot::getIsLoading();
-    isShootingStatus = Robot::getIsShooting();
-    isTargetingStatus = Robot::getIsTargeting();
-    
-    return *this;
+StatusDisplay& update_display_values() {
+
 }
 
 
@@ -112,10 +106,10 @@ const wpi::Twine StatusDisplay::robotStateToString() const {
 
 const wpi::Twine StatusDisplay::driveModeToString() const {
     switch (driveModeStatus) {
-        case Robotmap::DriveModes::ARCADE_MODE:
+        case ARCADE_MODE:
             return wpi::Twine("Arcade Drive");
             break;
-        case Robotmap::DriveModes::TANK_MODE:
+        case TANK_MODE:
             return wpi::Twine("Tank Drive");
             break;
         default:

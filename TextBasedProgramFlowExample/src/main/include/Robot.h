@@ -51,7 +51,7 @@ public:
   static void 
     setDriveMode(const Robotmap::DriveModes& newDriveMode) { driveMode = newDriveMode; }
 
-  static const double 
+  static const double
     getMotorsSpeed() { return motorsSpeed; }
   static void 
     setMotorsSpeed(const double newMotorsSpeed) { motorsSpeed = newMotorsSpeed; }
