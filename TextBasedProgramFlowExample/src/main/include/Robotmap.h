@@ -7,15 +7,23 @@
 
 #pragma once
 
-class Drivetrain
-{
-private:
+class Robotmap {
+ public:
+  Robotmap() = default;
 
-public:
-  Drivetrain() = default;
+  enum class RobotStates {
+      IDLE_STATE,
+      DRIVING_STATE,
+      FIRING_STATE,
+      LOADING_STATE,
+      TARGETING_STATE,
+      MANIPULATING_STATE,
+      CLIMBING_STATE,
+      AUTONOMOUS_STATE
+  };
 
-  void checkAndExecDriveMode();
-
-  void arcadeDrive();
-  void tankDrive();
+  enum class DriveModes {
+      ARCADE_MODE,
+      TANK_MODE
+  };
 };

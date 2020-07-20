@@ -8,42 +8,42 @@
 #include "StatusDisplay.h"
 
 void StatusDisplay::populate_display() {
-    stateStatus = frc::Shuffleboard::GetTab(statusTabName)
+    robotStateNE = frc::Shuffleboard::GetTab(statusTabName)
         .Add("Status Narration", robotStateToString())
         .WithWidget(frc::BuiltInWidgets::kTextView)
         .WithSize(3,1)
         .WithPosition(3,0)
         .GetEntry();
     
-    driveModeStatus = frc::Shuffleboard::GetTab(statusTabName)
+    driveModeNE = frc::Shuffleboard::GetTab(statusTabName)
         .Add("Drive Mode", driveModeToString())
         .WithWidget(frc::BuiltInWidgets::kTextView)
         .WithSize(2,2)
         .WithPosition(6,1)
         .GetEntry();
         
-    motorSpeedStatus = frc::Shuffleboard::GetTab(statusTabName)
-        .Add("Motors Speed", motorDriveSpeed)
+    motorsSpeedNE = frc::Shuffleboard::GetTab(statusTabName)
+        .Add("Motors Speed", motorsSpeed)
         .WithWidget(frc::BuiltInWidgets::kDial)
         .WithSize(2,2)
         .WithPosition(1,1)
         .GetEntry();
     
-    loaderStatus = frc::Shuffleboard::GetTab(statusTabName)
+    loaderBoolNE = frc::Shuffleboard::GetTab(statusTabName)
         .Add("Loader", loading)
         .WithWidget(frc::BuiltInWidgets::kBooleanBox)
         .WithSize(1,3)
         .WithPosition(3,1)
         .GetEntry();
     
-    shooterStatus = frc::Shuffleboard::GetTab(statusTabName)
+    shooterBoolNE = frc::Shuffleboard::GetTab(statusTabName)
         .Add("Shooter", shooting)
         .WithWidget(frc::BuiltInWidgets::kBooleanBox)
         .WithSize(1,3)
         .WithPosition(4,1)
         .GetEntry();
     
-    targetingStatus = frc::Shuffleboard::GetTab(statusTabName)
+    targetingBoolNE = frc::Shuffleboard::GetTab(statusTabName)
         .Add("Targeting", targeting)
         .WithWidget(frc::BuiltInWidgets::kBooleanBox)
         .WithSize(1,3)
@@ -52,40 +52,40 @@ void StatusDisplay::populate_display() {
 }
 
 void StatusDisplay::update_statuses() {
-    stateStatus.SetString(robotStateToString());
-    driveModeStatus.SetString(driveModeToString());
-    motorSpeedStatus.SetDouble(motorDriveSpeed);
-    loaderStatus.SetBoolean(loading);
-    shooterStatus.SetBoolean(shooting);
-    targetingStatus.SetBoolean(targeting);
+    robotStateNE.SetString(robotStateToString());
+    driveModeNE.SetString(driveModeToString());
+    motorsSpeedNE.SetDouble(motorsSpeed);
+    loaderBoolNE.SetBoolean(loading);
+    shooterBoolNE.SetBoolean(shooting);
+    targetingBoolNE.SetBoolean(targeting);
 }
 
 
 
 const wpi::Twine StatusDisplay::robotStateToString() const {
-    switch (robotState) {
-        case IDLE_STATE:
+    switch (robotStateStatus) {
+        case Robotmap::RobotStates::IDLE_STATE:
             return wpi::Twine("Idle");
             break;
-        case DRIVING_STATE:
+        case Robotmap::RobotStates::DRIVING_STATE:
             return wpi::Twine("Driving");
             break;
-        case FIRING_STATE:
+        case Robotmap::RobotStates::FIRING_STATE:
             return wpi::Twine("Firing Shooter");
             break;
-        case LOADING_STATE:
+        case Robotmap::RobotStates::LOADING_STATE:
             return wpi::Twine("Loading Shooter");
             break;
-        case TARGETING_STATE:
+        case Robotmap::RobotStates::TARGETING_STATE:
             return wpi::Twine("Targeting Goal");
             break;
-        case MANIPULATING_STATE:
+        case Robotmap::RobotStates::MANIPULATING_STATE:
             return wpi::Twine("Moving Manipulator");
             break;
-        case CLIMBING_STATE:
+        case Robotmap::RobotStates::CLIMBING_STATE:
             return wpi::Twine("Climbing");
             break;
-        case AUTONOMOUS_STATE:
+        case Robotmap::RobotStates::AUTONOMOUS_STATE:
             return wpi::Twine("Autonomous");
             break;
         default:
@@ -95,11 +95,11 @@ const wpi::Twine StatusDisplay::robotStateToString() const {
 }
 
 const wpi::Twine StatusDisplay::driveModeToString() const {
-    switch (driveMode) {
-        case ARCADE_MODE:
+    switch (driveModeStatus) {
+        case Robotmap::DriveModes::ARCADE_MODE:
             return wpi::Twine("Arcade Drive");
             break;
-        case TANK_MODE:
+        case Robotmap::DriveModes::TANK_MODE:
             return wpi::Twine("Tank Drive");
             break;
         default:

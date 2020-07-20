@@ -5,17 +5,4 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#pragma once
-
-class Drivetrain
-{
-private:
-
-public:
-  Drivetrain() = default;
-
-  void checkAndExecDriveMode();
-
-  void arcadeDrive();
-  void tankDrive();
-};
+#include "Robotmap.h"

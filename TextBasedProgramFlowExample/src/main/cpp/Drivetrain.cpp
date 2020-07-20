@@ -7,4 +7,6 @@
 
 #include "Drivetrain.h"
 
-Drivetrain::Drivetrain() {}
+void Drivetrain::checkAndExecDriveMode() {
+    
+}

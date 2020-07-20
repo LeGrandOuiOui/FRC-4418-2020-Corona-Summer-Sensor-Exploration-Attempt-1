@@ -7,49 +7,34 @@
 
 #pragma once
 
-#include "networktables/NetworkTableEntry.h"
-#include "wpi/Twine.h"
+#include <networktables/NetworkTableEntry.h>
+#include <wpi/Twine.h>
 #include <frc/shuffleboard/Shuffleboard.h>
 
+#include "Robotmap.h"
 
 class StatusDisplay {
   private:
 
     friend class Robot;
 
-    enum RobotStates {
-      IDLE_STATE,
-      DRIVING_STATE,
-      FIRING_STATE,
-      LOADING_STATE,
-      TARGETING_STATE,
-      MANIPULATING_STATE,
-      CLIMBING_STATE,
-      AUTONOMOUS_STATE
-    };
-
-    enum DriveModes {
-      ARCADE_MODE,
-      TANK_MODE
-    };
-
 
     const std::string statusTabName = "Test Tab Aight?";
     
-    RobotStates robotState = IDLE_STATE;     // Other states include "Driving", "Firing", "Loading", 
+    Robotmap::RobotStates robotStateStatus = Robotmap::RobotStates::IDLE_STATE;     // Other states include "Driving", "Firing", "Loading", 
                                                                // "Targeting", "Manipulating", "Climbing", "Autonomous"
-    DriveModes driveMode = ARCADE_MODE;      // Modes include "Arcade" and "Tank"
-    double motorDriveSpeed = 0.0;            // Max of 1.0, min of 0.0
+    Robotmap::DriveModes driveModeStatus = Robotmap::DriveModes::ARCADE_MODE;      // Modes include "Arcade" and "Tank"
+    double motorsSpeed = 0.0;            // Max of 1.0, min of 0.0
     bool loading = false;                    // Triggered would be "Spinning", idle would be "Idle"
     bool shooting = false;                   // Triggered would be "Firing", idle would be "Cold"
     bool targeting = false;                  // Triggered would be "Activated", idle would be "Deactivated"
 
-    nt::NetworkTableEntry stateStatus;
-    nt::NetworkTableEntry driveModeStatus;
-    nt::NetworkTableEntry motorSpeedStatus;
-    nt::NetworkTableEntry loaderStatus;
-    nt::NetworkTableEntry shooterStatus;
-    nt::NetworkTableEntry targetingStatus;
+    nt::NetworkTableEntry robotStateNE;
+    nt::NetworkTableEntry driveModeNE;
+    nt::NetworkTableEntry motorsSpeedNE;
+    nt::NetworkTableEntry loaderBoolNE;
+    nt::NetworkTableEntry shooterBoolNE;
+    nt::NetworkTableEntry targetingBoolNE;
 
 
     const wpi::Twine robotStateToString() const;
