@@ -11,42 +11,53 @@ void StatusDisplay::populate_display() {
     stateStatus = frc::Shuffleboard::GetTab(statusTabName)
         .Add("Status Narration", robotStateToString())
         .WithWidget(frc::BuiltInWidgets::kTextView)
-        .WithSize(40, 30)
+        .WithSize(3,1)
+        .WithPosition(3,0)
         .GetEntry();
+    
     driveModeStatus = frc::Shuffleboard::GetTab(statusTabName)
         .Add("Drive Mode", driveModeToString())
         .WithWidget(frc::BuiltInWidgets::kTextView)
-        .WithSize(30,30)
+        .WithSize(2,3)
+        .WithPosition(6,1)
         .GetEntry();
-    motorDriveSpeedStatus = frc::Shuffleboard::GetTab(statusTabName)
+        
+    motorSpeedStatus = frc::Shuffleboard::GetTab(statusTabName)
         .Add("Motors Speed", motorDriveSpeed)
         .WithWidget(frc::BuiltInWidgets::kDial)
-        .WithSize(50,50)
+        .WithSize(2,3)
+        .WithPosition(1,1)
         .GetEntry();
+    
     loaderStatus = frc::Shuffleboard::GetTab(statusTabName)
-        .Add("Loader", loaderStatusToString())
-        .WithWidget(frc::BuiltInWidgets::kTextView)
-        .WithSize(30,25)
+        .Add("Loader", loading)
+        .WithWidget(frc::BuiltInWidgets::kBooleanBox)
+        .WithSize(1,3)
+        .WithPosition(3,1)
         .GetEntry();
+    
     shooterStatus = frc::Shuffleboard::GetTab(statusTabName)
-        .Add("Shooter", shooterStatusToString())
-        .WithWidget(frc::BuiltInWidgets::kTextView)
-        .WithSize(30,25)
+        .Add("Shooter", shooting)
+        .WithWidget(frc::BuiltInWidgets::kBooleanBox)
+        .WithSize(1,3)
+        .WithPosition(4,1)
         .GetEntry();
+    
     targetingStatus = frc::Shuffleboard::GetTab(statusTabName)
-        .Add("Targeting", targetingStatusToString())
-        .WithWidget(frc::BuiltInWidgets::kTextView)
-        .WithSize(30,25)
+        .Add("Targeting", targeting)
+        .WithWidget(frc::BuiltInWidgets::kBooleanBox)
+        .WithSize(1,3)
+        .WithPosition(5,1)
         .GetEntry();
 }
 
 void StatusDisplay::update_statuses() {
     stateStatus.SetString(robotStateToString());
     driveModeStatus.SetString(driveModeToString());
-    motorDriveSpeedStatus.SetDouble(motorDriveSpeed);
-    loaderStatus.SetString(loaderStatusToString());
-    shooterStatus.SetString(shooterStatusToString());
-    targetingStatus.SetString(targetingStatusToString());
+    motorSpeedStatus.SetDouble(motorDriveSpeed);
+    loaderStatus.SetBoolean(loading);
+    shooterStatus.SetBoolean(shooting);
+    targetingStatus.SetBoolean(targeting);
 }
 
 
@@ -95,25 +106,4 @@ const wpi::Twine StatusDisplay::driveModeToString() const {
             return wpi::Twine("UNKNOWN DRIVE");
             break;
     }
-}
-
-const wpi::Twine StatusDisplay::loaderStatusToString() const {
-    if (loading)
-        return wpi::Twine("Spinning");
-    else
-        return wpi::Twine("Idle");
-}
-
-const wpi::Twine StatusDisplay::shooterStatusToString() const {
-    if (shooting)
-        return wpi::Twine("Firing");
-    else
-        return wpi::Twine("Cold");
-}
-
-const wpi::Twine StatusDisplay::targetingStatusToString() {
-    if (targeting)
-    return wpi::Twine("Activated");
-    else
-        return wpi::Twine("Deactivated");
 }

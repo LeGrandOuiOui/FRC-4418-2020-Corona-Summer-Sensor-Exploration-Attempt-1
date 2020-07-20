@@ -43,7 +43,7 @@ class StatusDisplay {
 
     nt::NetworkTableEntry stateStatus;
     nt::NetworkTableEntry driveModeStatus;
-    nt::NetworkTableEntry motorDriveSpeedStatus;
+    nt::NetworkTableEntry motorSpeedStatus;
     nt::NetworkTableEntry loaderStatus;
     nt::NetworkTableEntry shooterStatus;
     nt::NetworkTableEntry targetingStatus;
@@ -51,9 +51,6 @@ class StatusDisplay {
 
     const wpi::Twine robotStateToString() const;
     const wpi::Twine driveModeToString() const;
-    const wpi::Twine loaderStatusToString() const;
-    const wpi::Twine shooterStatusToString() const;
-    const wpi::Twine targetingStatusToString();
 
   public:
     StatusDisplay() = default;
