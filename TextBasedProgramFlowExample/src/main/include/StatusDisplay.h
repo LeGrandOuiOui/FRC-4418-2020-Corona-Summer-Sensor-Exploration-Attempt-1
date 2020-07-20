@@ -17,7 +17,7 @@ class StatusDisplay {
   private:
     const std::string statusTabName = "4418 R-Stat Display";
     
-      // TODO: finish COMPLETE robot narration for each subway
+      // TODO: Finish hierarchal robot narration for each subway
     Robotmap::RobotStates robotStateStatus 
       = Robotmap::RobotStates::IDLE_STATE;         // Other states include "Driving", "Firing", "Loading", 
                                                         // "Targeting", "Manipulating", "Climbing", "Autonomous"

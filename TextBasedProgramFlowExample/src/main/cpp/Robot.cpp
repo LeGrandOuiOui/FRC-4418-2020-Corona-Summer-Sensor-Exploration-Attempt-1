@@ -14,10 +14,10 @@
 #include "Drivetrain.h"
 #include "StatusDisplay.h"
 
-
+// TODO: Globally, change all copy-initializations to brace-initializations
 // Default values for the robot's Properties
 Robotmap::DriveModes Robot::driveMode   = Robotmap::DriveModes::ARCADE_MODE;
-double Robot::motorsSpeed{ 0.0 };
+double Robot::motorsSpeed               = 0.0;
 bool Robot::isLoading                   = false;
 bool Robot::isShooting                  = false;
 bool Robot::isManiping                  = false;
@@ -51,7 +51,7 @@ void Robot::RobotInit()
 
 void Robot::RobotPeriodic()
 {
-  statusDisplay.update_display_values().update_display(); // TODO: Test if this is the issue; if so, refresh on func chaining
+  statusDisplay.update_display_values().update_display();
 }
 
 void Robot::AutonomousInit()

@@ -28,15 +28,6 @@ private:
   // const std::string kAutoNameCustom = "My Auto";
   // std::string m_autoSelected;
 
-  // int testCounter = 0;
-
-  // nt::NetworkTableEntry networkCounter;
-  // wpi::StringMap<std::shared_ptr<nt::Value>> networkCounterProperties = {
-  //   std::make_pair("min", nt::Value::MakeDouble(0)),
-  //   std::make_pair("max", nt::Value::MakeDouble(1000))
-  // };
-
-
   // Properties
   static Robotmap::DriveModes   driveMode;
   static double                 motorsSpeed;            
