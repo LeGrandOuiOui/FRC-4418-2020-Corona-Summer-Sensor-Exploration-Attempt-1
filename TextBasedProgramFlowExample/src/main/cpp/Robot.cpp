@@ -5,13 +5,15 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "Robot.h"
-#include "StatusDisplay.h"
-
 #include <iostream>
 
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc/shuffleboard/Shuffleboard.h>
+
+#include "Robot.h"
+#include "Drivetrain.h"
+#include "StatusDisplay.h"
+
 
 void Robot::RobotInit()
 {
@@ -35,7 +37,7 @@ void Robot::RobotInit()
 
 void Robot::RobotPeriodic()
 {
-  statusDisplay.update_statuses();
+  statusDisplay.update_display_values().update_display();
 }
 
 void Robot::AutonomousInit()
@@ -63,6 +65,7 @@ void Robot::AutonomousPeriodic()
 
 void Robot::TeleopInit()
 {
+
 }
 
 void Robot::TeleopPeriodic()
@@ -73,6 +76,8 @@ void Robot::TeleopPeriodic()
 
   // Set functions for NetworkTableEntry class must also be called periodically to display updating values
   // networkCounter.SetDouble(testCounter);
+
+  drivetrain.checkAndExecDriveMode();
 }
 
 void Robot::DisabledInit()

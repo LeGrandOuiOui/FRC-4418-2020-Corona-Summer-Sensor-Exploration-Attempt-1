@@ -21,13 +21,15 @@ class StatusDisplay {
 
     const std::string statusTabName = "Test Tab Aight?";
     
+
+        // A seperate copy of the robot's properties is made here to prevent the display from causing unwanted behavior
     Robotmap::RobotStates robotStateStatus = Robotmap::RobotStates::IDLE_STATE;     // Other states include "Driving", "Firing", "Loading", 
                                                                // "Targeting", "Manipulating", "Climbing", "Autonomous"
     Robotmap::DriveModes driveModeStatus = Robotmap::DriveModes::ARCADE_MODE;      // Modes include "Arcade" and "Tank"
-    double motorsSpeed = 0.0;            // Max of 1.0, min of 0.0
-    bool loading = false;                    // Triggered would be "Spinning", idle would be "Idle"
-    bool shooting = false;                   // Triggered would be "Firing", idle would be "Cold"
-    bool targeting = false;                  // Triggered would be "Activated", idle would be "Deactivated"
+    double motorsSpeed = 0.0;                  // Max of 1.0, min of 0.0
+    bool isLoading = false;                    // Triggered would be "Spinning", idle would be "Idle"
+    bool isShooting = false;                   // Triggered would be "Firing", idle would be "Cold"
+    bool isTargeting = false;                  // Triggered would be "Activated", idle would be "Deactivated"
 
     nt::NetworkTableEntry robotStateNE;
     nt::NetworkTableEntry driveModeNE;
@@ -43,7 +45,9 @@ class StatusDisplay {
   public:
     StatusDisplay() = default;
 
-    void populate_display();
+    StatusDisplay& populate_display();
 
-    void update_statuses();
+    StatusDisplay& update_display();
+
+    StatusDisplay& update_display_values();
 };
