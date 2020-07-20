@@ -26,10 +26,10 @@ class StatusDisplay {
     Robotmap::RobotStates robotStateStatus = Robotmap::RobotStates::IDLE_STATE;     // Other states include "Driving", "Firing", "Loading", 
                                                                // "Targeting", "Manipulating", "Climbing", "Autonomous"
     Robotmap::DriveModes driveModeStatus = Robotmap::DriveModes::ARCADE_MODE;      // Modes include "Arcade" and "Tank"
-    double motorsSpeed = 0.0;                  // Max of 1.0, min of 0.0
-    bool isLoading = false;                    // Triggered would be "Spinning", idle would be "Idle"
-    bool isShooting = false;                   // Triggered would be "Firing", idle would be "Cold"
-    bool isTargeting = false;                  // Triggered would be "Activated", idle would be "Deactivated"
+    double motorsSpeedStatus = 0.0;                  // Max of 1.0, min of 0.0
+    bool isLoadingStatus = false;                    // Triggered would be "Spinning", idle would be "Idle"
+    bool isShootingStatus = false;                   // Triggered would be "Firing", idle would be "Cold"
+    bool isTargetingStatus = false;                  // Triggered would be "Activated", idle would be "Deactivated"
 
     nt::NetworkTableEntry robotStateNE;
     nt::NetworkTableEntry driveModeNE;

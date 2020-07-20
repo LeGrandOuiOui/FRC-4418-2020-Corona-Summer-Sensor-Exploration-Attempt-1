@@ -25,28 +25,28 @@ StatusDisplay& StatusDisplay::populate_display() {
         .GetEntry();
         
     motorsSpeedNE = frc::Shuffleboard::GetTab(statusTabName)
-        .Add("Motors Speed", motorsSpeed)
+        .Add("Motors Speed", motorsSpeedStatus)
         .WithWidget(frc::BuiltInWidgets::kDial)
         .WithSize(2,2)
         .WithPosition(1,1)
         .GetEntry();
     
     loaderBoolNE = frc::Shuffleboard::GetTab(statusTabName)
-        .Add("Loader", isLoading)
+        .Add("Loader", isLoadingStatus)
         .WithWidget(frc::BuiltInWidgets::kBooleanBox)
         .WithSize(1,3)
         .WithPosition(3,1)
         .GetEntry();
     
     shooterBoolNE = frc::Shuffleboard::GetTab(statusTabName)
-        .Add("Shooter", isShooting)
+        .Add("Shooter", isShootingStatus)
         .WithWidget(frc::BuiltInWidgets::kBooleanBox)
         .WithSize(1,3)
         .WithPosition(4,1)
         .GetEntry();
     
     targetingBoolNE = frc::Shuffleboard::GetTab(statusTabName)
-        .Add("Targeting", isTargeting)
+        .Add("Targeting", isTargetingStatus)
         .WithWidget(frc::BuiltInWidgets::kBooleanBox)
         .WithSize(1,3)
         .WithPosition(5,1)
@@ -58,20 +58,20 @@ StatusDisplay& StatusDisplay::populate_display() {
 StatusDisplay& StatusDisplay::update_display() {
     robotStateNE.SetString(robotStateToString());
     driveModeNE.SetString(driveModeToString());
-    motorsSpeedNE.SetDouble(motorsSpeed);
-    loaderBoolNE.SetBoolean(isLoading);
-    shooterBoolNE.SetBoolean(isShooting);
-    targetingBoolNE.SetBoolean(isTargeting);
+    motorsSpeedNE.SetDouble(motorsSpeedStatus);
+    loaderBoolNE.SetBoolean(isLoadingStatus);
+    shooterBoolNE.SetBoolean(isShootingStatus);
+    targetingBoolNE.SetBoolean(isTargetingStatus);
     
     return *this;
 }
 
 StatusDisplay& StatusDisplay::update_display_values() {
     driveModeStatus = Robot::getDriveMode();
-    motorsSpeed = Robot::getMotorsSpeed();
-    isLoading = Robot::getIsLoading();
-    isShooting = Robot::getIsShooting();
-    isTargeting = Robot::getIsTargeting();
+    motorsSpeedStatus = Robot::getMotorsSpeed();
+    isLoadingStatus = Robot::getIsLoading();
+    isShootingStatus = Robot::getIsShooting();
+    isTargetingStatus = Robot::getIsTargeting();
     
     return *this;
 }

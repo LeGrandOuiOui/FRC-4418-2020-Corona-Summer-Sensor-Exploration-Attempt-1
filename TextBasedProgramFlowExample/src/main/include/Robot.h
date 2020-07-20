@@ -46,34 +46,34 @@ private:
 
   // Properties Getters and Setters
 public:
-  inline static const Robotmap::DriveModes& 
+  static const Robotmap::DriveModes& 
     getDriveMode() { return driveMode; }
-  inline static void 
+  static void 
     setDriveMode(const Robotmap::DriveModes& newDriveMode) { driveMode = newDriveMode; }
 
-  inline static const double 
+  static const double 
     getMotorsSpeed() { return motorsSpeed; }
-  inline static void 
+  static void 
     setMotorsSpeed(const double newMotorsSpeed) { motorsSpeed = newMotorsSpeed; }
   
-  inline static const bool 
+  static const bool 
     getIsLoading() { return isLoading; };
-  inline static void
+  static void
     setIsLoading(const bool newIsLoading) { isLoading = newIsLoading; }
   
-  inline static const bool
+  static const bool
     getIsShooting() { return isShooting; }
-  inline static void
+  static void
     setIsShooting(const bool newIsShooting) { isShooting = newIsShooting; }
   
-  inline static const bool
+  static const bool
     getIsTargeting() { return isTargeting; }
-  inline static void
+  static void
     setIsTargeting(const bool newIsTargeting) { isTargeting = newIsTargeting; }
 
 private:
   // Subways
-  static StatusDisplay statusDisplay;
+  StatusDisplay statusDisplay;
   Drivetrain drivetrain;
 
 public:
