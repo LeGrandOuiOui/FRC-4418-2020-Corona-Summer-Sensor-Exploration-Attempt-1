@@ -13,9 +13,16 @@
 class Drivetrain
 {
 private:
-
+  Robotmap::DriveModes lastTwoJoyOption = Robotmap::DriveModes::TANK_MODE;    // default TANK or DRONE toggle is TANK
 public:
   Drivetrain() = default;
+
+  inline const Robotmap::DriveModes& getLastTwoJoyOption() {
+    return lastTwoJoyOption;
+  }
+  inline void setLastTwoJoyOption(const Robotmap::DriveModes& newLastTwoJoyOption) {
+    lastTwoJoyOption = newLastTwoJoyOption;
+  }
 
   void checkAndExecDriveMode();
 

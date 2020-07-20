@@ -128,6 +128,9 @@ const wpi::Twine StatusDisplay::driveModeToString() const {
         case Robotmap::DriveModes::TANK_MODE:
             return wpi::Twine("Tank Drive");
             break;
+        case Robotmap::DriveModes::DRONE_MODE:
+            return wpi::Twine("Drone Drive");
+            break;
         default:
             return wpi::Twine("UNKNOWN DRIVE");
             break;

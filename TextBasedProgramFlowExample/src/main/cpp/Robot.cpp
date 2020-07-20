@@ -74,7 +74,6 @@ void Robot::TeleopInit()
 void Robot::TeleopPeriodic()
 {
   drivetrain.checkAndExecDriveMode();
-  std::cout << std::boolalpha << "Test button pressed? " << xboxController.GetBackButtonPressed() << '\n';
 }
 
 void Robot::DisabledInit()

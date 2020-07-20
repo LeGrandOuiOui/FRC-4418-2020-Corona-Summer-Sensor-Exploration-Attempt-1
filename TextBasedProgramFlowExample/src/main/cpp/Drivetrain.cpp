@@ -14,20 +14,24 @@
 
 void Drivetrain::checkAndExecDriveMode()
 {
-    /*
-    if (B2 is pressed && B1 NOT pressed)
-        switch to arcade drive
-    else if (B1 is pressed && already in arcade or drone) {
-        if (in arcade)
-            switch to drone
-        if (in drone)
-            switch to arcade
-        remembered option = current drive
-    } else
-        switch to last remembered arcade/drone option   
-    */
+    // DM stands for DriveMode
+    using DM = Robotmap::DriveModes;
+    Robotmap::DriveModes oldDM = Robot::getDriveMode();     // Evaluate just once to prevent constant namespace jumping
 
-    
+    if (Robot::xboxController.GetBackButtonPressed() && !Robot::xboxController.GetStartButtonPressed())
+        Robot::setDriveMode(DM::ARCADE_MODE);
+    else if (!Robot::xboxController.GetBackButtonPressed() && Robot::xboxController.GetStartButtonPressed()) {
+        if (oldDM == DM::TANK_MODE 
+        || oldDM == DM::DRONE_MODE) {
+            if (oldDM == DM::TANK_MODE)
+                Robot::setDriveMode(DM::DRONE_MODE);
+            else if (oldDM == DM::DRONE_MODE)
+                Robot::setDriveMode(DM::TANK_MODE);
+        } else
+            Robot::setDriveMode(getLastTwoJoyOption());
+        setLastTwoJoyOption(Robot::getDriveMode());
+    }
+
 
     switch (Robot::getDriveMode())
     {
@@ -39,8 +43,10 @@ void Drivetrain::checkAndExecDriveMode()
         break;
     case Robotmap::DriveModes::DRONE_MODE:
         droneDrive();
+        break;
     default:
         std::cout << "DRIVETRAIN ERROR: Unknown driveMode evaluated\n";
+        break;
     }
 }
 
