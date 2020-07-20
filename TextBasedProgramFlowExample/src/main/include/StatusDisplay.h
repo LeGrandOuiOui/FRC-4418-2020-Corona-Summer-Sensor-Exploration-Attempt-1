@@ -44,7 +44,7 @@ class StatusDisplay {
     nt::NetworkTableEntry targetingStatus;
 
 
-    const wpi::Twine& robotStateToString() const {
+    const wpi::Twine robotStateToString() const {
       switch (robotState) {
         case IDLE_STATE:
           return wpi::Twine("Idle");
@@ -76,7 +76,7 @@ class StatusDisplay {
       }
     }
 
-    const wpi::Twine& driveModeToString() const {
+    const wpi::Twine driveModeToString() const {
       switch (driveMode) {
       case ARCADE_MODE:
         return wpi::Twine("Arcade Drive");
@@ -90,21 +90,21 @@ class StatusDisplay {
       }
     }
 
-    const wpi::Twine& loaderStatusToString() const {
+    const wpi::Twine loaderStatusToString() const {
       if (loading)
         return wpi::Twine("Spinning");
       else
         return wpi::Twine("Idle");
     }
 
-    const wpi::Twine& shooterStatusToString() const {
+    const wpi::Twine shooterStatusToString() const {
       if (shooting)
         return wpi::Twine("Firing");
       else
         return wpi::Twine("Cold");
     }
 
-    const wpi::Twine& targetingStatusToString() {
+    const wpi::Twine targetingStatusToString() {
       if (targeting)
         return wpi::Twine("Activated");
       else
