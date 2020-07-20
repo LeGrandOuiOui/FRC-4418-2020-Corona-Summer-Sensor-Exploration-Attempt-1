@@ -38,11 +38,12 @@ private:
 
 
   // Properties
-  static Robotmap::DriveModes driveMode;    // Modes include "Arcade" and "Tank"
-  static double motorsSpeed;                // Max of 1.0, min of 0.0
-  static bool isLoading;                    // Triggered would be "Spinning", idle would be "Idle"
-  static bool isShooting;                   // Triggered would be "Firing", idle would be "Cold"
-  static bool isTargeting;                  // Triggered would be "Activated", idle would be "Deactivated"
+  static Robotmap::DriveModes   driveMode;
+  static double                 motorsSpeed;            
+  static bool                   isLoading;                
+  static bool                   isShooting;               
+  static bool                   isManiping;
+  static bool                   isTargeting;              
 
   // Properties Getters and Setters
 public:
@@ -66,6 +67,11 @@ public:
   static void
     setIsShooting(const bool newIsShooting) { isShooting = newIsShooting; }
   
+  static const bool
+    getIsManiping() { return isManiping; }
+  static void
+    setIsManiping(const bool newIsManiping) { isManiping = newIsManiping; }
+
   static const bool
     getIsTargeting() { return isTargeting; }
   static void

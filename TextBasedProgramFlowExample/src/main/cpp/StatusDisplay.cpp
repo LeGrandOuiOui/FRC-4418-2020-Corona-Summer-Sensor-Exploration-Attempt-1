@@ -20,8 +20,8 @@ StatusDisplay& StatusDisplay::populate_display() {
     driveModeNE = frc::Shuffleboard::GetTab(statusTabName)
         .Add("Drive Mode", driveModeToString())
         .WithWidget(frc::BuiltInWidgets::kTextView)
-        .WithSize(2,2)
-        .WithPosition(6,1)
+        .WithSize(2,1)
+        .WithPosition(1,3)
         .GetEntry();
         
     motorsSpeedNE = frc::Shuffleboard::GetTab(statusTabName)
@@ -46,6 +46,13 @@ StatusDisplay& StatusDisplay::populate_display() {
         .WithPosition(4,1)
         .GetEntry();
     
+    manipBoolNE = frc::Shuffleboard::GetTab(statusTabName)
+        .Add("Manipulator", isManipingStatus)
+        .WithWidget(frc::BuiltInWidgets::kBooleanBox)
+        .WithSize(1,3)
+        .WithPosition(6,1)
+        .GetEntry();
+
     targetingBoolNE = frc::Shuffleboard::GetTab(statusTabName)
         .Add("Targeting", isTargetingStatus)
         .WithWidget(frc::BuiltInWidgets::kBooleanBox)
@@ -62,6 +69,7 @@ StatusDisplay& StatusDisplay::update_display() {
     motorsSpeedNE.SetDouble(motorsSpeedStatus);
     loaderBoolNE.SetBoolean(isLoadingStatus);
     shooterBoolNE.SetBoolean(isShootingStatus);
+    manipBoolNE.SetBoolean(isManipingStatus);
     targetingBoolNE.SetBoolean(isTargetingStatus);
     
     return *this;
@@ -72,6 +80,7 @@ StatusDisplay& StatusDisplay::update_display_values() {
     motorsSpeedStatus = Robot::getMotorsSpeed();
     isLoadingStatus = Robot::getIsLoading();
     isShootingStatus = Robot::getIsShooting();
+    isManipingStatus = Robot::getIsManiping();
     isTargetingStatus = Robot::getIsTargeting();
 }
 
