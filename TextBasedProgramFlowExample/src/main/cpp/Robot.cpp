@@ -32,7 +32,6 @@ void Robot::RobotInit() {
 
 
   statusDisplay.populate_display();
-    
 }
 
 
