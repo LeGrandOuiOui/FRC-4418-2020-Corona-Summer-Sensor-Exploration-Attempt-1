@@ -18,14 +18,14 @@ void StatusDisplay::populate_display() {
     driveModeStatus = frc::Shuffleboard::GetTab(statusTabName)
         .Add("Drive Mode", driveModeToString())
         .WithWidget(frc::BuiltInWidgets::kTextView)
-        .WithSize(2,3)
+        .WithSize(2,2)
         .WithPosition(6,1)
         .GetEntry();
         
     motorSpeedStatus = frc::Shuffleboard::GetTab(statusTabName)
         .Add("Motors Speed", motorDriveSpeed)
         .WithWidget(frc::BuiltInWidgets::kDial)
-        .WithSize(2,3)
+        .WithSize(2,2)
         .WithPosition(1,1)
         .GetEntry();
     
