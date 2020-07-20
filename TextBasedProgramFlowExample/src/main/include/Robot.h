@@ -47,6 +47,7 @@ private:
 
   // Properties Getters and Setters
 public:
+  // inlined for efficiency and returns references to primitive types due to need for const-getting
   inline static Robotmap::DriveModes& 
     getDriveMode() { return driveMode; }
   inline static void 
