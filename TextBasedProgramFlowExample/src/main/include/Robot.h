@@ -18,6 +18,8 @@
 
 #include "StatusDisplay.h"
 #include "Drivetrain.h"
+#include "Loader.h"
+#include "Shooter.h"
 
 
 class Robot : public frc::TimedRobot
@@ -73,6 +75,8 @@ private:
   // Subways
   StatusDisplay statusDisplay;
   Drivetrain drivetrain;
+  Loader loader;
+  Shooter shooter;
 
 public:
   // Input Devices

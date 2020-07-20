@@ -8,6 +8,8 @@
 #pragma once
 
 class Shooter {
- public:
-  Shooter();
+public:
+  Shooter() = default;
+
+  void checkAndSpinShooter();
 };

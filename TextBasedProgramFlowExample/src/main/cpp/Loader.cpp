@@ -9,6 +9,9 @@
 #include "Robot.h"
 
 void Loader::checkAndSpinLoader() {
-    if (Robot::xboxController.GetBumper(frc::GenericHID::kRightHand))
+    if (Robot::xboxController.GetBumper(frc::GenericHID::kRightHand)) {
         Robot::setIsLoading(true);
+        return;
+    }
+    Robot::setIsLoading(false);     // otherwise, loader should not be spinning
 }

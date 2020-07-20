@@ -35,6 +35,9 @@ public:
         DRONE_MODE
     };
 
+    // Trigger Thresholds
+    static constexpr double R_TRIGGER_THRESH{ 0.69 };  // nice
+
     // Ports and Channels
-    static constexpr int XBOXCONTROLLER_PORT { 3 };
+    static constexpr int XBOXCONTROLLER_PORT{ 3 };
 };

@@ -6,5 +6,13 @@
 /*----------------------------------------------------------------------------*/
 
 #include "Shooter.h"
+#include "Robot.h"
 
-Shooter::Shooter() {}
+void Shooter::checkAndSpinShooter() {
+    if (Robot::xboxController.GetTriggerAxis(frc::GenericHID::kRightHand) 
+    > Robotmap::R_TRIGGER_THRESH) {
+        Robot::setIsShooting(true);
+        return;
+    }
+    Robot::setIsShooting(false);        // otherwise, shooter should not be spinning
+}

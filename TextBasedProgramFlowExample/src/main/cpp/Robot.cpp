@@ -74,6 +74,8 @@ void Robot::TeleopInit()
 void Robot::TeleopPeriodic()
 {
   drivetrain.checkAndExecDriveMode();
+  loader.checkAndSpinLoader();
+  shooter.checkAndSpinShooter();
 }
 
 void Robot::DisabledInit()
