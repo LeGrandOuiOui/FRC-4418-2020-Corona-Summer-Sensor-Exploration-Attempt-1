@@ -91,6 +91,7 @@ void Robot::TeleopPeriodic()
   // networkCounter.SetDouble(testCounter);
 
   drivetrain.checkAndExecDriveMode();
+  std::cout << "Drive VALUE: " << motorsSpeed << '\n';
 }
 
 void Robot::DisabledInit()
