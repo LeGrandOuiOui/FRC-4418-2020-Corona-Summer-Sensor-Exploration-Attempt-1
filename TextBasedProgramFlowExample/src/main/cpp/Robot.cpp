@@ -20,6 +20,7 @@ Robotmap::DriveModes Robot::driveMode   = Robotmap::DriveModes::ARCADE_MODE;
 double Robot::motorsSpeed               = 0.0;
 bool Robot::isLoading                   = false;
 bool Robot::isShooting                  = false;
+bool Robot::isClimbing                  = false;
 bool Robot::isMovingManip               = false;
 bool Robot::isSpinningManip             = false;
 bool Robot::isTargeting                 = false;
