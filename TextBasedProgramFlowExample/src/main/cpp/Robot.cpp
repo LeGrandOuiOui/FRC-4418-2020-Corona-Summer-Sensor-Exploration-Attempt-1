@@ -9,6 +9,8 @@
 
 // #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc/shuffleboard/Shuffleboard.h>
+#include <frc/DigitalInput.h>
+#include <frc/AnalogPotentiometer.h>
 
 #include "Robot.h"
 #include "Drivetrain.h"
@@ -73,7 +75,7 @@ void Robot::AutonomousPeriodic()
 
 void Robot::TeleopInit()
 {
-
+  
 }
 
 void Robot::TeleopPeriodic()
@@ -100,7 +102,13 @@ void Robot::TestInit() {
 }
 
 void Robot::TestPeriodic() {
-  
+  // Example of how to use PIR sensors
+  // frc::DigitalInput pirSensor{ 8 };
+  // std::cout << "PIR Digital Output: " << pirSensor.Get() << '\n';
+
+      // Example of how to use analog infrared (distance-measuring) sensors
+  // frc::AnalogPotentiometer analogIRSensor{ 2 };
+  // std::cout << "IR Analog Output: " << analogIRSensor.Get() << '\n';
 }
 
 #ifndef RUNNING_FRC_TESTS
