@@ -21,6 +21,7 @@
 #include "Drivetrain.h"
 #include "Loader.h"
 #include "Shooter.h"
+#include "Manipulator.h"
 
 
 class Robot : public frc::TimedRobot
@@ -84,6 +85,7 @@ private:
   Drivetrain drivetrain;
   Loader loader;
   Shooter shooter;
+  Manipulator manipulator;
 
 public:
   // Input Devices

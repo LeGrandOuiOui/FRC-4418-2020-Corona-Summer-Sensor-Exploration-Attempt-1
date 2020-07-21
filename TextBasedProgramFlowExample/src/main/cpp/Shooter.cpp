@@ -8,7 +8,7 @@
 #include "Shooter.h"
 #include "Robot.h"
 
-void Shooter::checkAndSpinShooter() {
+void Shooter::checkAndExec() {
     if (Robot::xboxController.GetTriggerAxis(frc::GenericHID::kRightHand) 
     > Robotmap::R_TRIGGER_THRESH) {
         Robot::setIsShooting(true);

@@ -12,7 +12,7 @@
 #include "Robotmap.h"
 #include "Drivetrain.h"
 
-void Drivetrain::checkAndExecDriveMode()
+void Drivetrain::checkAndExec()
 {
     // DM stands for DriveMode
     using DM = Robotmap::DriveModes;

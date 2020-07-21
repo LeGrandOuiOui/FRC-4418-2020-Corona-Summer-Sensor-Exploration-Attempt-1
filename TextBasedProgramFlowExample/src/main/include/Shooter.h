@@ -11,5 +11,5 @@ class Shooter {
 public:
   Shooter() = default;
 
-  void checkAndSpinShooter();
+  void checkAndExec();
 };

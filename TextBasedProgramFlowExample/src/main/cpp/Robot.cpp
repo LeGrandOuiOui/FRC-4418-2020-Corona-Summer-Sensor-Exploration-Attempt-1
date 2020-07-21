@@ -78,12 +78,10 @@ void Robot::TeleopInit()
 
 void Robot::TeleopPeriodic()
 {
-  drivetrain.checkAndExecDriveMode();
-  loader.checkAndSpinLoader();
-  shooter.checkAndSpinShooter();
-
-  if (xboxUpPOV.Get())
-    std::cout << "The up xbox POV was pressed!\n";
+  drivetrain.checkAndExec();
+  loader.checkAndExec();
+  shooter.checkAndExec();
+  manipulator.checkAndExec();
 }
 
 void Robot::DisabledInit()

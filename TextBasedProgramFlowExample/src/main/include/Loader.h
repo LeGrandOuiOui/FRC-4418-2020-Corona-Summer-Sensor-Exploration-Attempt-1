@@ -11,5 +11,5 @@ class Loader {
 public:
   Loader() = default;
 
-  void checkAndSpinLoader();
+  void checkAndExec();
 };

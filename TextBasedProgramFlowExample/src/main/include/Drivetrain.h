@@ -24,7 +24,7 @@ public:
     lastTwoJoyOption = newLastTwoJoyOption;
   }
 
-  void checkAndExecDriveMode();
+  void checkAndExec();
 
   void arcadeDrive();
   void tankDrive();

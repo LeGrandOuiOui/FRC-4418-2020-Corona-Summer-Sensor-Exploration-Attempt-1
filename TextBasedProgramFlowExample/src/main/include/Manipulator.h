@@ -5,13 +5,20 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "Loader.h"
-#include "Robot.h"
+#pragma once
 
-void Loader::checkAndExec() {
-    if (Robot::xboxController.GetBumper(frc::GenericHID::kRightHand)) {
-        Robot::setIsLoading(true);
-        return;
-    }
-    Robot::setIsLoading(false);     // otherwise, loader should not be spinning
-}
+class Manipulator {
+private:
+  enum ELBOW_DIRS {
+    UP,
+    DOWN
+  };
+public:
+  Manipulator() = default;
+
+  void checkAndExec();
+
+  void moveElbow(const ELBOW_DIRS&);
+    // Only declared for design continuity and as an academic text-based example
+  // void spinHand();
+};
