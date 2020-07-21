@@ -22,12 +22,13 @@ class StatusDisplay {
                                                         // "Targeting", "Manipulating", "Climbing", "Autonomous"
     Robotmap::DriveModes driveModeStatus 
       = Robotmap::DriveModes::ARCADE_MODE;         // Modes include "Arcade" and "Tank"
-    double motorsSpeedStatus = 0.0;                // Max of sqrt(2), min of 0.0
-    bool isLoadingStatus = false;
-    bool isShootingStatus = false;
-    bool isMovingManipStatus = false;
-    bool isSpinningManipStatus = false;
-    bool isTargetingStatus = false;
+    double motorsSpeedStatus    = 0.0;                // Max of sqrt(2), min of 0.0
+    bool isLoadingStatus        = false;
+    bool isShootingStatus       = false;
+    bool isClimbingStatus       = false;
+    bool isMovingManipStatus    = false;
+    bool isSpinningManipStatus  = false;
+    bool isTargetingStatus      = false;
 
     // Network table entries for non-manipulator systems
     nt::NetworkTableEntry robotStateNE;
@@ -39,6 +40,7 @@ class StatusDisplay {
       };
     nt::NetworkTableEntry loaderBoolNE;
     nt::NetworkTableEntry shooterBoolNE;
+    nt::NetworkTableEntry climberBoolNE;
     nt::NetworkTableEntry targetingBoolNE;
 
     // Shuffleboard layout for manipulator system

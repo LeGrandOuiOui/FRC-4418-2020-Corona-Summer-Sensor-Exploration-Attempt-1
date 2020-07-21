@@ -46,12 +46,19 @@ StatusDisplay& StatusDisplay::populate_display() {
         .WithPosition(4,1)
         .GetEntry();
 
+    climberBoolNE = frc::Shuffleboard::GetTab(statusTabName)
+        .Add("Climber", isClimbingStatus)
+        .WithWidget(frc::BuiltInWidgets::kBooleanBox)
+        .WithSize(1,3)
+        .WithPosition(7,1)
+        .GetEntry();
+
     movingManipBoolNE =
-        manipLayoutSB.Add("Elbow Moving", isMovingManipStatus)
+        manipLayoutSB.Add("Elbow", isMovingManipStatus)
         .WithWidget(frc::BuiltInWidgets::kBooleanBox)
         .GetEntry();
     spinningManipBoolNE = 
-        manipLayoutSB.Add("Hand Spinning", isSpinningManipStatus)
+        manipLayoutSB.Add("Hand", isSpinningManipStatus)
         .WithWidget(frc::BuiltInWidgets::kBooleanBox)
         .GetEntry();
 
@@ -71,6 +78,7 @@ StatusDisplay& StatusDisplay::update_display() {
     motorsSpeedNE.SetDouble(motorsSpeedStatus);
     loaderBoolNE.SetBoolean(isLoadingStatus);
     shooterBoolNE.SetBoolean(isShootingStatus);
+    climberBoolNE.SetBoolean(isClimbingStatus);
     movingManipBoolNE.SetBoolean(isMovingManipStatus);
     spinningManipBoolNE.SetBoolean(isSpinningManipStatus);
     targetingBoolNE.SetBoolean(isTargetingStatus);
@@ -79,13 +87,14 @@ StatusDisplay& StatusDisplay::update_display() {
 }
 
 StatusDisplay& StatusDisplay::update_display_values() {
-    driveModeStatus = Robot::getDriveMode();
-    motorsSpeedStatus = Robot::getMotorsSpeed();
-    isLoadingStatus = Robot::getIsLoading();
-    isShootingStatus = Robot::getIsShooting();
-    isMovingManipStatus = Robot::getIsMovingManip();
-    isSpinningManipStatus = Robot::getIsSpinningManip();
-    isTargetingStatus = Robot::getIsTargeting();
+    driveModeStatus            = Robot::getDriveMode();
+    motorsSpeedStatus          = Robot::getMotorsSpeed();
+    isLoadingStatus            = Robot::getIsLoading();
+    isShootingStatus           = Robot::getIsShooting();
+    isClimbingStatus           = Robot::getIsClimbing();
+    isMovingManipStatus        = Robot::getIsMovingManip();
+    isSpinningManipStatus      = Robot::getIsSpinningManip();
+    isTargetingStatus          = Robot::getIsTargeting();
 
     return *this;
 }
