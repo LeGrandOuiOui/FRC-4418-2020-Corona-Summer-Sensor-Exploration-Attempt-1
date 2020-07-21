@@ -16,7 +16,7 @@ void Drivetrain::checkAndExec()
 {
     // DM stands for DriveMode
     using DM = Robotmap::DriveModes;
-    Robotmap::DriveModes oldDM = Robot::getDriveMode();     // Evaluate just once to prevent constant namespace jumping
+    Robotmap::DriveModes oldDM{ Robot::getDriveMode() };     // Evaluate just once to prevent constant namespace jumping
 
     if (Robot::xboxController.GetBackButtonPressed() && !Robot::xboxController.GetStartButtonPressed())
         Robot::setDriveMode(DM::ARCADE_MODE);

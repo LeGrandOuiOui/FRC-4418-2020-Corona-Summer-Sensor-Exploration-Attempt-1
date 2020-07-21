@@ -14,16 +14,15 @@
 #include "Drivetrain.h"
 #include "StatusDisplay.h"
 
-// TODO: Globally, change all copy-initializations to brace-initializations
 // Default values for the robot's Properties
-Robotmap::DriveModes Robot::driveMode   = Robotmap::DriveModes::ARCADE_MODE;
-double Robot::motorsSpeed               = 0.0;
-bool Robot::isLoading                   = false;
-bool Robot::isShooting                  = false;
-bool Robot::isClimbing                  = false;
-bool Robot::isMovingManip               = false;
-bool Robot::isSpinningManip             = false;
-bool Robot::isTargeting                 = false;
+Robotmap::DriveModes Robot::driveMode   { Robotmap::DriveModes::ARCADE_MODE };
+double Robot::motorsSpeed               { 0.0 };
+bool Robot::isLoading                   { false };
+bool Robot::isShooting                  { false };
+bool Robot::isClimbing                  { false };
+bool Robot::isMovingManip               { false };
+bool Robot::isSpinningManip             { false };
+bool Robot::isTargeting                 { false };
 
 
 // Default ports and channels for robot Input Devices
