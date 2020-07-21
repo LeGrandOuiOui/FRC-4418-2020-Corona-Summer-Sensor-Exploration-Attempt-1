@@ -40,5 +40,8 @@ public:
 
     // Ports and Channels
     static constexpr int XBOXCONTROLLER_PORT{ 3 };
-    
+
+    // Constants
+    static constexpr int XBOX_UP_POV_ANGLE{ 0 };
+    static constexpr int XBOX_DOWN_POV_ANGLE{ 180 };
 };

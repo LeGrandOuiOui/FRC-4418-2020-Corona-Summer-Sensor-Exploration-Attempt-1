@@ -27,7 +27,8 @@ bool Robot::isTargeting                 = false;
 
 // Default ports and channels for robot Input Devices
 frc::XboxController Robot::xboxController{ Robotmap::XBOXCONTROLLER_PORT };
-frc::POVButton Robot::xboxUpPOV{ Robot::xboxController, 90, 0 };
+frc::POVButton Robot::xboxUpPOV{ Robot::xboxController, Robotmap::XBOX_UP_POV_ANGLE };
+frc::POVButton Robot::xboxDownPOV{ Robot::xboxController, Robotmap::XBOX_DOWN_POV_ANGLE };
 
 
 
