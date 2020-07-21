@@ -11,6 +11,7 @@
 #include <frc/shuffleboard/Shuffleboard.h>
 #include <frc/DigitalInput.h>
 #include <frc/AnalogPotentiometer.h>
+#include <frc/Ultrasonic.h>
 
 #include "Robot.h"
 #include "Drivetrain.h"
@@ -109,6 +110,10 @@ void Robot::TestPeriodic() {
       // Example of how to use analog infrared (distance-measuring) sensors
   // frc::AnalogPotentiometer analogIRSensor{ 2 };
   // std::cout << "IR Analog Output: " << analogIRSensor.Get() << '\n';
+
+      // Example of how to use ping-response (trigger) ultrasonic sensors
+  frc::Ultrasonic ultrasonicSensor{ 0, 1 };
+  std::cout << "Ping-Ultrasonic Analog Output: " << ultrasonicSensor.GetRangeMM() << '\n';
 }
 
 #ifndef RUNNING_FRC_TESTS
