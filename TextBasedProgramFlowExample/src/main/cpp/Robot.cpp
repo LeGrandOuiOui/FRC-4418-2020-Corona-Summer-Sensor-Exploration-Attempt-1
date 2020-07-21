@@ -112,7 +112,7 @@ void Robot::TestPeriodic() {
   // std::cout << "IR Analog Output: " << analogIRSensor.Get() << '\n';
 
       // Example of how to use ping-response (trigger) ultrasonic sensors
-  frc::Ultrasonic ultrasonicSensor{ 0, 1 };
+  frc::Ultrasonic ultrasonicSensor{ 7, 8, frc::Ultrasonic::kMilliMeters };
   std::cout << "Ping-Ultrasonic Analog Output: " << ultrasonicSensor.GetRangeMM() << '\n';
 }
 

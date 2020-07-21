@@ -9,11 +9,12 @@
 #include "Robot.h"
 
 void Targeting::checkAndExec() {
-    if (Robot::xboxController.GetBButtonPressed())
+    if (Robot::xboxController.GetBButtonPressed()) {
         if (Robot::getIsTargeting())
             Robot::setIsTargeting(false);
         else
             Robot::setIsTargeting(true);
+    }   
     if (Robot::getIsTargeting())
         execAlgorithm();
 }
