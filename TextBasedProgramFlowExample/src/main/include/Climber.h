@@ -7,17 +7,15 @@
 
 #pragma once
 
-class Manipulator {
+class Climber {
 private:
-  enum ELBOW_DIRS {
+  enum DIR {
     UP,
     DOWN
   };
 public:
-  Manipulator() = default;
+  Climber() = default;
 
   void checkAndExec();
-
-  void moveElbow(const ELBOW_DIRS&);
-  void spinHand();
+  void moveClimber(const DIR&);
 };

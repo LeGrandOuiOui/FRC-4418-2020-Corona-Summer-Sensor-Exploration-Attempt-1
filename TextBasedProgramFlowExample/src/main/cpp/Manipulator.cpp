@@ -17,17 +17,24 @@ void Manipulator::checkAndExec() {
         Robot::setIsMovingManip(false);
     
     if (Robot::xboxController.GetXButton())
-        Robot::setIsSpinningManip(true);
+        spinHand();
     else
         Robot::setIsSpinningManip(false);
 }
 
 void Manipulator::moveElbow(const Manipulator::ELBOW_DIRS& elbowDir) {
-    if (elbowDir == Manipulator::ELBOW_DIRS::UP || elbowDir == Manipulator::ELBOW_DIRS::DOWN)
-        Robot::setIsMovingManip(true);
+    switch (elbowDir) {
+        case Manipulator::UP:
+        case Manipulator::DOWN:
+            Robot::setIsMovingManip(true);
+            break;
+        default:
+            Robot::setIsMovingManip(false);
+            std::cout << "MANIPULATOR ERROR: Unknown elbow direction evaluated\n";
+            break;
+    }
 }
 
-        // Only defined for design continuity and as an academic text-based example
-// void Manipulator::spinHand() {
-//     Robot::setIsSpinningManip(true);
-// }
+void Manipulator::spinHand() {
+    Robot::setIsSpinningManip(true);
+}

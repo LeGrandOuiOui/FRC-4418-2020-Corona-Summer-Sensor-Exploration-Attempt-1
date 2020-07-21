@@ -22,6 +22,7 @@
 #include "Loader.h"
 #include "Shooter.h"
 #include "Manipulator.h"
+#include "Climber.h"
 
 
 class Robot : public frc::TimedRobot
@@ -36,7 +37,8 @@ private:
   static Robotmap::DriveModes   driveMode;
   static double                 motorsSpeed;            
   static bool                   isLoading;                
-  static bool                   isShooting;               
+  static bool                   isShooting;
+  static bool                   isClimbing;               
   static bool                   isMovingManip;    // shorthand for isMovingManipulator
   static bool                   isSpinningManip;  // shorthand for isSpinningManipulator
   static bool                   isTargeting;              
@@ -65,6 +67,11 @@ public:
     setIsShooting(const bool newIsShooting) { isShooting = newIsShooting; }
   
   inline static const bool&
+    getIsClimbing() { return isClimbing; }
+  inline static void
+    setIsClimbing(const bool newIsClimbing) { isClimbing = newIsClimbing; }
+    
+  inline static const bool&
     getIsMovingManip() { return isMovingManip; }
   inline static void
     setIsMovingManip(const bool newIsMovingManip) { isMovingManip = newIsMovingManip; }
@@ -86,6 +93,7 @@ private:
   Loader loader;
   Shooter shooter;
   Manipulator manipulator;
+  Climber climber;
 
 public:
   // Input Devices
