@@ -86,7 +86,41 @@ StatusDisplay& StatusDisplay::update_display() {
     return *this;
 }
 
+void StatusDisplay::determineRobotStatus() {
+    // Yes, this function is quite repetitive, but it helps maintain the disconnected control 
+        // between the display and the robot's actual state, in the very likely case that 
+        // the display needs to become interactive
+    using States = Robotmap::RobotStates;
+    if (isTargetingStatus) {
+        robotStateStatus = States::TARGETING_STATE;
+        return;
+    }
+    if (isClimbingStatus) {
+        robotStateStatus = States::CLIMBING_STATE;
+        return;
+    }
+    if (isMovingManipStatus || isSpinningManipStatus) {
+        robotStateStatus = States::MANIPULATING_STATE;
+        return;
+    }
+    if (isShootingStatus) {
+        robotStateStatus = States::SHOOTING_STATE;
+        return;
+    }
+    if (isLoadingStatus) {
+        robotStateStatus = States::LOADING_STATE;
+        return;
+    }
+    if (motorsSpeedStatus > Robotmap::IS_DRIVING_THRESH) {
+        robotStateStatus = States::DRIVING_STATE;
+        return;
+    }
+
+    robotStateStatus = States::IDLE_STATE;
+}
+
 StatusDisplay& StatusDisplay::update_display_values() {
+    determineRobotStatus();
     driveModeStatus            = Robot::getDriveMode();
     motorsSpeedStatus          = Robot::getMotorsSpeed();
     isLoadingStatus            = Robot::getIsLoading();
@@ -109,7 +143,7 @@ const wpi::Twine StatusDisplay::robotStateToString() const {
         case Robotmap::RobotStates::DRIVING_STATE:
             return wpi::Twine("Driving");
             break;
-        case Robotmap::RobotStates::FIRING_STATE:
+        case Robotmap::RobotStates::SHOOTING_STATE:
             return wpi::Twine("Firing Shooter");
             break;
         case Robotmap::RobotStates::LOADING_STATE:

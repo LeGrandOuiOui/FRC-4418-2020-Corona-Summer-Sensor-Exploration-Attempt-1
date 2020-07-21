@@ -20,7 +20,7 @@ public:
     {
         IDLE_STATE,
         DRIVING_STATE,
-        FIRING_STATE,
+        SHOOTING_STATE,
         LOADING_STATE,
         TARGETING_STATE,
         MANIPULATING_STATE,
@@ -42,6 +42,8 @@ public:
     static constexpr int XBOXCONTROLLER_PORT{ 3 };
 
     // Constants
+    static constexpr int IS_DRIVING_THRESH = 0.5;
+
     static constexpr int XBOX_UP_POV_ANGLE{ 0 };
     static constexpr int XBOX_DOWN_POV_ANGLE{ 180 };
 };
