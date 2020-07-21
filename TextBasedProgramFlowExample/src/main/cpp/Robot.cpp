@@ -27,6 +27,8 @@ bool Robot::isTargeting                 = false;
 
 // Default ports and channels for robot Input Devices
 frc::XboxController Robot::xboxController{ Robotmap::XBOXCONTROLLER_PORT };
+  // note: pov index represents WHICH POV-pad on the controller. Example: If a controller had two POV-pads,
+    // the second POV-pad would be at index 1 (0-based index)
 frc::POVButton Robot::xboxUpPOV{ Robot::xboxController, Robotmap::XBOX_UP_POV_ANGLE };
 frc::POVButton Robot::xboxDownPOV{ Robot::xboxController, Robotmap::XBOX_DOWN_POV_ANGLE };
 
