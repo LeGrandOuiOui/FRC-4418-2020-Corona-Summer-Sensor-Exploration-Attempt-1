@@ -45,12 +45,14 @@ StatusDisplay& StatusDisplay::populate_display() {
         .WithSize(1,3)
         .WithPosition(4,1)
         .GetEntry();
-    
-    manipBoolNE = frc::Shuffleboard::GetTab(statusTabName)
-        .Add("Manipulator", isManipingStatus)
+
+    movingManipBoolNE =
+        manipLayoutSB.Add("Elbow Moving", isMovingManipStatus)
         .WithWidget(frc::BuiltInWidgets::kBooleanBox)
-        .WithSize(1,3)
-        .WithPosition(6,1)
+        .GetEntry();
+    spinningManipBoolNE = 
+        manipLayoutSB.Add("Hand Spinning", isSpinningManipStatus)
+        .WithWidget(frc::BuiltInWidgets::kBooleanBox)
         .GetEntry();
 
     targetingBoolNE = frc::Shuffleboard::GetTab(statusTabName)
@@ -69,7 +71,8 @@ StatusDisplay& StatusDisplay::update_display() {
     motorsSpeedNE.SetDouble(motorsSpeedStatus);
     loaderBoolNE.SetBoolean(isLoadingStatus);
     shooterBoolNE.SetBoolean(isShootingStatus);
-    manipBoolNE.SetBoolean(isManipingStatus);
+    movingManipBoolNE.SetBoolean(isMovingManipStatus);
+    spinningManipBoolNE.SetBoolean(isSpinningManipStatus);
     targetingBoolNE.SetBoolean(isTargetingStatus);
     
     return *this;
@@ -80,7 +83,8 @@ StatusDisplay& StatusDisplay::update_display_values() {
     motorsSpeedStatus = Robot::getMotorsSpeed();
     isLoadingStatus = Robot::getIsLoading();
     isShootingStatus = Robot::getIsShooting();
-    isManipingStatus = Robot::getIsManiping();
+    isMovingManipStatus = Robot::getIsMovingManip();
+    isSpinningManipStatus = Robot::getIsSpinningManip();
     isTargetingStatus = Robot::getIsTargeting();
 
     return *this;

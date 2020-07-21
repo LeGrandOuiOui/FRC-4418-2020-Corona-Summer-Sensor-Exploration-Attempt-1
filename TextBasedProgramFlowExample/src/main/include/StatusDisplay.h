@@ -7,8 +7,9 @@
 
 #pragma once
 
-#include "networktables/NetworkTableEntry.h"
-#include "wpi/Twine.h"
+#include <networktables/NetworkTableEntry.h>
+#include <frc/shuffleboard/ShuffleboardLayout.h>
+#include <wpi/Twine.h>
 
 
 class StatusDisplay {
@@ -24,9 +25,11 @@ class StatusDisplay {
     double motorsSpeedStatus = 0.0;                // Max of sqrt(2), min of 0.0
     bool isLoadingStatus = false;
     bool isShootingStatus = false;
-    bool isManipingStatus = false;
+    bool isMovingManipStatus = false;
+    bool isSpinningManipStatus = false;
     bool isTargetingStatus = false;
 
+    // Network table entries for non-manipulator systems
     nt::NetworkTableEntry robotStateNE;
     nt::NetworkTableEntry driveModeNE;
     nt::NetworkTableEntry motorsSpeedNE;
@@ -36,8 +39,20 @@ class StatusDisplay {
       };
     nt::NetworkTableEntry loaderBoolNE;
     nt::NetworkTableEntry shooterBoolNE;
-    nt::NetworkTableEntry manipBoolNE;
     nt::NetworkTableEntry targetingBoolNE;
+
+    // Shuffleboard layout for manipulator system
+    wpi::StringMap<std::shared_ptr<nt::Value>> manipLayoutSBProperties = {
+      std::make_pair("Label position", nt::Value::MakeString("TOP"))
+    };
+    frc::ShuffleboardLayout& manipLayoutSB = frc::Shuffleboard::GetTab(statusTabName)
+        .GetLayout("Manipulator", frc::BuiltInLayouts::kList)
+        .WithSize(1,3)
+        .WithPosition(6,1)
+        .WithProperties(manipLayoutSBProperties);
+    // Network table entries for manipulator shuffleboard layout
+    nt::NetworkTableEntry movingManipBoolNE;
+    nt::NetworkTableEntry spinningManipBoolNE;
 
 
     const wpi::Twine robotStateToString() const;

@@ -35,7 +35,8 @@ private:
   static double                 motorsSpeed;            
   static bool                   isLoading;                
   static bool                   isShooting;               
-  static bool                   isManiping;   // shorthand for isManipulating
+  static bool                   isMovingManip;    // shorthand for isMovingManipulator
+  static bool                   isSpinningManip;  // shorthand for isSpinningManipulator
   static bool                   isTargeting;              
 
   // Properties Getters and Setters
@@ -62,9 +63,14 @@ public:
     setIsShooting(const bool newIsShooting) { isShooting = newIsShooting; }
   
   inline static const bool&
-    getIsManiping() { return isManiping; }
+    getIsMovingManip() { return isMovingManip; }
   inline static void
-    setIsManiping(const bool newIsManiping) { isManiping = newIsManiping; }
+    setIsMovingManip(const bool newIsMovingManip) { isMovingManip = newIsMovingManip; }
+
+  inline static const bool&
+    getIsSpinningManip() { return isSpinningManip; }
+  inline static void
+    setIsSpinningManip(const bool newIsSpinningManip) { isSpinningManip = newIsSpinningManip; }
 
   inline static const bool&
     getIsTargeting() { return isTargeting; }
