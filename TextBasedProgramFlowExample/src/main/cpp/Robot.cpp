@@ -84,6 +84,7 @@ void Robot::TeleopPeriodic()
   shooter.checkAndExec();
   manipulator.checkAndExec();
   climber.checkAndExec();
+  targeting.checkAndExec();
 }
 
 void Robot::DisabledInit()

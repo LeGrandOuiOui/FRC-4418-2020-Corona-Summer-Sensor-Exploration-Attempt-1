@@ -23,6 +23,7 @@
 #include "Shooter.h"
 #include "Manipulator.h"
 #include "Climber.h"
+#include "Targeting.h"
 
 
 class Robot : public frc::TimedRobot
@@ -94,6 +95,7 @@ private:
   Shooter shooter;
   Manipulator manipulator;
   Climber climber;
+  Targeting targeting;
 
 public:
   // Input Devices
