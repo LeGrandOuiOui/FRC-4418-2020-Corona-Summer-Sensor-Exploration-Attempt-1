@@ -72,6 +72,20 @@ StatusDisplay& StatusDisplay::populate_display() {
     return *this;
 }
 
+StatusDisplay& StatusDisplay::update_display_values() {
+    determineRobotStatus();
+    driveModeStatus            = Robot::getDriveMode();
+    motorsSpeedStatus          = Robot::getMotorsSpeed();
+    isLoadingStatus            = Robot::getIsLoading();
+    isShootingStatus           = Robot::getIsShooting();
+    isClimbingStatus           = Robot::getIsClimbing();
+    isMovingManipStatus        = Robot::getIsMovingManip();
+    isSpinningManipStatus      = Robot::getIsSpinningManip();
+    isTargetingStatus          = Robot::getIsTargeting();
+
+    return *this;
+}
+
 StatusDisplay& StatusDisplay::update_display() {
     robotStateNE.SetString(robotStateToString());
     driveModeNE.SetString(driveModeToString());
@@ -119,46 +133,33 @@ void StatusDisplay::determineRobotStatus() {
     robotStateStatus = States::IDLE_STATE;
 }
 
-StatusDisplay& StatusDisplay::update_display_values() {
-    determineRobotStatus();
-    driveModeStatus            = Robot::getDriveMode();
-    motorsSpeedStatus          = Robot::getMotorsSpeed();
-    isLoadingStatus            = Robot::getIsLoading();
-    isShootingStatus           = Robot::getIsShooting();
-    isClimbingStatus           = Robot::getIsClimbing();
-    isMovingManipStatus        = Robot::getIsMovingManip();
-    isSpinningManipStatus      = Robot::getIsSpinningManip();
-    isTargetingStatus          = Robot::getIsTargeting();
-
-    return *this;
-}
-
 
 
 const wpi::Twine StatusDisplay::robotStateToString() const {
+    using States = Robotmap::RobotStates;
     switch (robotStateStatus) {
-        case Robotmap::RobotStates::IDLE_STATE:
+        case States::IDLE_STATE:
             return wpi::Twine("Idle");
             break;
-        case Robotmap::RobotStates::DRIVING_STATE:
+        case States::DRIVING_STATE:
             return wpi::Twine("Driving");
             break;
-        case Robotmap::RobotStates::SHOOTING_STATE:
+        case States::SHOOTING_STATE:
             return wpi::Twine("Firing Shooter");
             break;
-        case Robotmap::RobotStates::LOADING_STATE:
+        case States::LOADING_STATE:
             return wpi::Twine("Loading Shooter");
             break;
-        case Robotmap::RobotStates::TARGETING_STATE:
+        case States::TARGETING_STATE:
             return wpi::Twine("Targeting Goal");
             break;
-        case Robotmap::RobotStates::MANIPULATING_STATE:
+        case States::MANIPULATING_STATE:
             return wpi::Twine("Moving Manipulator");
             break;
-        case Robotmap::RobotStates::CLIMBING_STATE:
+        case States::CLIMBING_STATE:
             return wpi::Twine("Climbing");
             break;
-        case Robotmap::RobotStates::AUTONOMOUS_STATE:
+        case States::AUTONOMOUS_STATE:
             return wpi::Twine("Autonomous");
             break;
         default:
