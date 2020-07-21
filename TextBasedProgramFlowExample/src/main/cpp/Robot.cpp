@@ -28,6 +28,10 @@ bool Robot::isSpinningManip             { false };
 bool Robot::isTargeting                 { false };
 
 
+    // Example of setting up a ping-response ultrasonic sensor
+// frc::Ultrasonic ultrasonicSensor{ 7, 8, frc::Ultrasonic::kMilliMeters };
+
+
 // Default ports and channels for robot Input Devices
 frc::XboxController Robot::xboxController{ Robotmap::XBOXCONTROLLER_PORT };
   // note: pov index represents WHICH POV-pad on the controller. Example: If a controller had two POV-pads,
@@ -99,7 +103,8 @@ void Robot::DisabledPeriodic() {
 }
 
 void Robot::TestInit() {
-
+      // Make sure to turn on the WPILIB automatic mode for valid ping-ultrasonic output
+  // ultrasonicSensor.SetAutomaticMode(true);
 }
 
 void Robot::TestPeriodic() {
@@ -112,8 +117,11 @@ void Robot::TestPeriodic() {
   // std::cout << "IR Analog Output: " << analogIRSensor.Get() << '\n';
 
       // Example of how to use ping-response (trigger) ultrasonic sensors
-  frc::Ultrasonic ultrasonicSensor{ 7, 8, frc::Ultrasonic::kMilliMeters };
-  std::cout << "Ping-Ultrasonic Analog Output: " << ultrasonicSensor.GetRangeMM() << '\n';
+  // std::cout << "Ping-Ultrasonic Output: ";
+  // if (ultrasonicSensor.IsRangeValid())
+  //   std::cout << ultrasonicSensor.GetRangeMM() << '\n';
+  // else
+  //   std::cout << " NO VALID MEASUREMENTS\n";
 }
 
 #ifndef RUNNING_FRC_TESTS
