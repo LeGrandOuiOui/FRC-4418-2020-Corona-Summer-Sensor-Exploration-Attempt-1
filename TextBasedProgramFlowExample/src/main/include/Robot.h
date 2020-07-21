@@ -13,6 +13,7 @@
 // #include <frc/smartdashboard/SendableChooser.h>
 #include <frc/shuffleboard/Shuffleboard.h>
 #include <frc/XboxController.h>
+#include <frc/buttons/POVButton.h>
 
 #include "Robotmap.h"
 
@@ -87,6 +88,9 @@ private:
 public:
   // Input Devices
   static frc::XboxController xboxController;
+  static frc::POVButton xboxUpPOV;
+  static frc::POVButton xboxDownPOV;
+
 
   void RobotInit() override;
   void RobotPeriodic() override;
