@@ -14,8 +14,6 @@
 #include <frc/shuffleboard/Shuffleboard.h>
 #include <frc/XboxController.h>
 #include <frc/buttons/POVButton.h>
-#include <frc/ADXL345_I2C.h>
-#include <frc/I2C.h>
 
 #include "Robotmap.h"
 
@@ -104,9 +102,6 @@ public:
   static frc::XboxController xboxController;
   static frc::POVButton xboxUpPOV;
   static frc::POVButton xboxDownPOV;
-
-  // Example of how to use the ADXL345 accelerometer with I2C protocol
-  // frc::ADXL345_I2C accel_I2C{ frc::I2C::kOnBoard };
 
 
   void RobotInit() override;

@@ -10,6 +10,8 @@
 #include <networktables/NetworkTableEntry.h>
 #include <frc/shuffleboard/ShuffleboardLayout.h>
 #include <wpi/Twine.h>
+#include <frc/ADXL345_I2C.h>
+#include <frc/I2C.h>
 
 
 class StatusDisplay {
@@ -42,16 +44,6 @@ private:
   nt::NetworkTableEntry climberBoolNE;
   nt::NetworkTableEntry targetingBoolNE;
 
-      // Network table entries and layout for viewing X Y Z acceleration on ADXL345 simultaneously
-        // for ADXL345 accelerometer example
-  // frc::ShuffleboardLayout& accelLayoutSB = frc::Shuffleboard::GetTab(statusTabName)
-  //   .GetLayout("Accelerometer", frc::BuiltInLayouts::kList)
-  //   .WithSize(1,3)
-  //   .WithPosition()
-  nt::NetworkTableEntry accel_I2C_XaccelNE;
-  nt::NetworkTableEntry accel_I2C_YaccelNE;
-  nt::NetworkTableEntry accel_I2C_ZaccelNE;
-
   // Shuffleboard layout for manipulator system
   wpi::StringMap<std::shared_ptr<nt::Value>> manipLayoutSBProperties = {
     std::make_pair("Label position", nt::Value::MakeString("TOP"))
@@ -64,6 +56,25 @@ private:
   // Network table entries for manipulator shuffleboard layout
   nt::NetworkTableEntry movingManipBoolNE;
   nt::NetworkTableEntry spinningManipBoolNE;
+
+
+
+  // Example of how to setup accelerometer (using I2C) object for ADXL345
+  frc::ADXL345_I2C accel_I2C{ frc::I2C::kOnboard };
+  // Network table entries and layout for viewing X Y Z acceleration on ADXL345 simultaneously
+        // for ADXL345 accelerometer example
+  wpi::StringMap<std::shared_ptr<nt::Value>> accelLayoutSBProperties = {
+    std::make_pair("Label position", nt::Value::MakeString("TOP"))
+  };
+  frc::ShuffleboardLayout& accelLayoutSB = frc::Shuffleboard::GetTab(statusTabName)
+    .GetLayout("Accelerometer", frc::BuiltInLayouts::kList)
+    .WithSize(1,3)
+    .WithPosition(0,1)
+    .WithProperties(accelLayoutSBProperties);
+  nt::NetworkTableEntry accel_I2C_XaccelNE;
+  nt::NetworkTableEntry accel_I2C_YaccelNE;
+  nt::NetworkTableEntry accel_I2C_ZaccelNE;
+
 
 
   const wpi::Twine robotStateToString() const;

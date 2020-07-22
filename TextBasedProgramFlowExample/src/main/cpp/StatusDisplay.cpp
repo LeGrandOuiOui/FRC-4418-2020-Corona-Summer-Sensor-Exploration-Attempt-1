@@ -69,8 +69,18 @@ StatusDisplay& StatusDisplay::populate_display() {
         .WithPosition(5,1)
         .GetEntry();
     
-    // accel_I2C_XaccelNE = frc::Shuffleboard::GetTab(statusTabName)
-    //     .Add("")
+    accel_I2C_XaccelNE = 
+        accelLayoutSB.Add("X-Accel.", accel_I2C.GetX())
+        .WithWidget(frc::BuiltInWidgets::kNumberSlider)
+        .GetEntry();
+    accel_I2C_YaccelNE =
+        accelLayoutSB.Add("Y-Accel.", accel_I2C.GetY())
+        .WithWidget(frc::BuiltInWidgets::kNumberSlider)
+        .GetEntry();
+    accel_I2C_ZaccelNE = 
+        accelLayoutSB.Add("Z-Accel.", accel_I2C.GetZ())
+        .WithWidget(frc::BuiltInWidgets::kNumberSlider)
+        .GetEntry();
 
     return *this;
 }
@@ -99,7 +109,13 @@ StatusDisplay& StatusDisplay::update_display() {
     movingManipBoolNE.SetBoolean(isMovingManipStatus);
     spinningManipBoolNE.SetBoolean(isSpinningManipStatus);
     targetingBoolNE.SetBoolean(isTargetingStatus);
-    
+
+    // Network table entry updating for independent number sliders in layout 
+        // for ADXL345 accelerometer example
+    accel_I2C_XaccelNE.SetDouble(accel_I2C.GetX());
+    accel_I2C_YaccelNE.SetDouble(accel_I2C.GetY());
+    accel_I2C_ZaccelNE.SetDouble(accel_I2C.GetZ());
+
     return *this;
 }
 
