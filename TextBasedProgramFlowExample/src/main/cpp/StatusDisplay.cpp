@@ -69,6 +69,9 @@ StatusDisplay& StatusDisplay::populate_display() {
         .WithPosition(5,1)
         .GetEntry();
     
+    // accel_I2C_XaccelNE = frc::Shuffleboard::GetTab(statusTabName)
+    //     .Add("")
+
     return *this;
 }
 
